@@ -29,7 +29,7 @@
 </head>
 <style>
 :root {
-    --main-one: charcoal;
+    --main-one: black;
     --main-two: #FDF9F4;
     --main-text-fade: rgba(50, 8, 61, 0.7)
 }
@@ -40,6 +40,7 @@ html {
     /* 
    
     */ 
+    font-family: "Barlow";
     background-color: transparent;
     color: var(--main-one);
 }
@@ -68,7 +69,7 @@ html {
 }
 
 .title, .subtitle {
-    color: #2B3A67
+    color: black
 }
 
 .navbar {
@@ -84,12 +85,30 @@ html {
     color: #FAFAFA;
 }
 
-.is-thing {
-    transition: box-shadow 0.2s ease-in-out;
+.is-thing-box {
+    transition: all 0.2s ease-in-out;
+    background: transparent;
+    border: 3px solid black;
+    position: relative;
+    box-shadow: none;
 }
 
-.is-thing:hover {
+.is-thing-box:hover {
+    /*
     box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+    */
+    box-shadow: -4px 4px black;
+    transform: translateX(4px) translateY(-4px);
+    background: #D8794C
+}
+
+.box {
+    background-color: transparent;
+    box-shadow: none; 
+}
+
+.box-about {
+    border: 0.25rem solid;
 }
 
 .image-skills {
@@ -99,17 +118,11 @@ html {
 }
 
 body {
-    
     background: hsla(34, 91%, 73%, 1);
-    font-family: "Barlow";
-    font-weight: 300;
     color: var(--main-one)
 }
 
 .has-text-weight-bold {
-    font-family: "Barlow";
-    font-weight: 700;
-    color: var(--main-one)
 }
 
 .turn-icon {
@@ -118,22 +131,11 @@ body {
 }
 
 .is-thing:hover .turn-icon {
-    transition: all 0.3s ease;
+    transition: translate 0.3s ease;
     transform: translate(5px, -5px) rotate(45deg);
 }
 
-.title, .subtitle {
-    font-family: "Barlow"
-}
-
 .header {
-    /*
-    background: hsla(34, 91%, 73%, 1);
-    background: linear-gradient(90deg, hsla(34, 91%, 73%, 1) 0%, hsla(15, 90%, 75%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(34, 91%, 73%, 1) 0%, hsla(15, 90%, 75%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(34, 91%, 73%, 1) 0%, hsla(15, 90%, 75%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F9C37D", endColorstr="#F9A588", GradientType=1 );
-    */
     background: hsla(141, 81%, 87%, 1);
     background: linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
     background: -moz-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
@@ -142,23 +144,31 @@ body {
 }
 
 .middle {
-    background: #508991;
-
-    /*
-background: hsla(34, 91%, 73%, 1);
-        
-    background: hsla(237, 22%, 48%, 1);
-background: linear-gradient(90deg,hsla(244, 60%, 11%, 1) 0%,  hsla(237, 22%, 48%, 1) 100%);
-background: -moz-linear-gradient(90deg,hsla(244, 60%, 11%, 1)   0%, hsla(237, 22%, 48%, 1) 100%);
-background: -webkit-linear-gradient(90deg,hsla(244, 60%, 11%, 1)  0%, hsla(237, 22%, 48%, 1) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", endColorstr="#0D0B2C", GradientType=1 );
-*/
+    background: #89B8BE;
 }
 
 .things {
-    background: #D56F3E
+    background: #E09572
 }
 
+.button {
+    border: 1px solid black; 
+    box-shadow: 3px 4px black;
+    background: #F5F4E9;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    border: 1px solid black; 
+    background: #EBE9D2;
+    box-shadow: 1px 1px black;
+    transition: translateY(-4px);
+}
+
+.thing-do {
+    background: #C4DBDE;
+    box-shadow: 2px 2px 5px black inset;
+}
 
 </style>
 <body>
@@ -216,44 +226,43 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
     <section class="section is-medium">
         
         <div class="columns is-centered has-text-justified">
+            
             <div class="column is-4">
-                <div class="column is-4">
-                    <figure class="image is-128x128">
-                        <img class="" src="./static/undraw_predictive_analytics_re_wxt8.svg">
-                    </figure>
-                </div>
-                <div class="is-offset-4 column is-4">
-                    <figure class="image is-128x128">
-                        <img src = "./static/undraw_visionary_technology_re_jfp7.svg" alt="My Happy SVG"/>
-                    </figure>
-                    
-                </div>
-                <div class="is-offset-2 column is-4">
-                    <figure class="image is-128x128">
-                        <img src = "./static/undraw_world_re_768g.svg" alt="My Happy SVG"/>
-                    </figure>
-                </div>
             </div>
             <div class="column is-5">
+                <div class="box box-about">
                     <p class="title is-size-2 has-text-weight-bold">About this place</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">Who I am and what I do</p>
-                    <p class="is-size-5 has-text-weight-light">This is the second home of Emil (<a href="https://emr-dk.github.io">emr-dk</a>). My personal profile is where I test, store and do things as I feel like. This is where I put some of my bigger projects / ideas / things. 
+                    <p class="is-size-5 has-text-weight-light">Hello and welcome! This is the second home of 
+                        <a href="https://emr-dk.github.io"><button class="button is-rounded">Emil</button></a>. I make things and do stuff. Most of it with data. Some of it ...  
+                        My personal profile is where I test, store and do random experiments. This is where I (try) to put some of my bigger projects / ideas / things. 
                         It's not set in stone though (It also gives me a second place to try stuff out) - there's probably some cool stuff there as well. I hope you find my sites fun. At least not a waste of time </p>
-                    <p> Whatever</p>
+                    <p class="is-size-5 has-text-weight-light">This is the second home of Emil (<a href="https://emr-dk.github.io">emr-dk</a>). My personal profile is where I test, store and do things as I feel like. This is where I put some of my bigger projects / ideas / things. 
+                        It's not set in stone though (It also gives me a second place to try stuff out) - there's probably some cool stuff there as well. I hope you find my sites fun. At least not a waste of time
+                </div>
             </div>
         </div>
     </section>
     </div>
     <div class="middle">
-    <section class="section is-medium pt-0">
-        <div class="container is-fluid pb-6">
-        <p class="title is-size-2 has-text-weight-bold">Some of the things I do</p>
-        <p class="subtitle is-size-3 has-text-weight-bold">A short description of the things I do</p>
-        </div>
+    <section class="section is-medium">
+        
         <div class="columns is-centered">
+            <div class="column is-5">
+            <div class="container">
+                <p class="title is-size-2 has-text-weight-bold">Some of the things I do</p>
+                <p class="subtitle is-size-3 has-text-weight-bold">A short description of the things I do</p>
+                <p class="is-size-5 has-text-weight-light">My powers are endless. Lorum ipsum and all that jazz. Gotta make that text stick. 
+                    But you probably have most success if you expect me to do some of the following:</p>          
+                </div>
+            </div>
+        </div>
+        
+        <div class="columns is-centered">
+            
             <div class="column is-3 is-centered">
                 <div class="container">
-                    <div class="box">
+                    <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Data</h3>
                     <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -262,7 +271,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             </div>
             <div class="column is-3">
                 <div class="container">
-                    <div class="box">
+                    <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Visualisation</h3>
                     <p class="subtitle is-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
@@ -271,7 +280,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             </div>
             <div class="column is-3 is-centered">
                 <div class="container">
-                    <div class="box">
+                    <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Data</h3>
                     <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -282,7 +291,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
         <div class="columns is-centered">
             <div class="column is-3">
                 <div class="container">
-                        <div class="box">
+                        <div class="box thing-do">
                         <span class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
                         <h3 class="title is-5 has-text-weight-bold">Analytics</h3>
                         <p class="subtitle is-6">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
@@ -291,7 +300,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             </div>
             <div class="column is-3">
                 <div class="container">
-                    <div class="box">
+                    <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Analytics</h3>
                     <p class="subtitle is-6">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
@@ -300,7 +309,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             </div>
             <div class="column is-3 is-centered">
                 <div class="container">
-                    <div class="box">
+                    <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Data</h3>
                     <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -309,16 +318,21 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             </div>
         </div>
     </section>
-    <section class="section things is-medium pt-0">
-        <div class="container is-fluid pb-6">
-            <div class="block"></div>
-                <p class="title is-size-2 has-text-weight-bold">Things I have done</p>
-                <p class="subtitle is-size-3 has-text-weight-bold">Description of this part of the site</p>
+    <section class="section things is-medium">
+        <div class="columns is-centered">
+            <div class="column is-5">
+            <div class="container">
+                    <p class="title is-size-2 has-text-weight-bold">Things I have done</p>
+                    <p class="subtitle is-size-3 has-text-weight-bold">Description of this part of the site</p>
+                    <p class="is-size-5 has-text-weight-light">This is the second home of Emil (<a href="https://emr-dk.github.io">emr-dk</a>). My personal profile is where I test, store and do things as I feel like. This is where I put some of my bigger projects / ideas / things. 
+                        It's not set in stone though (It also gives me a second place to try stuff out) - there's probably some cool stuff there as well. I hope you find my sites fun. At least not a waste of time
             </div>
-            <div class="columns pb-6">
+            </div>
+        </div>
+            <div class="columns">
                 <div class="column is-offset-6 is-5">
-                    <div class="container ">
-                        <div class="box is-thing">
+                    <div class="container is-thing">
+                        <div class="box is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
@@ -338,7 +352,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             <div class="columns pb-6">
                 <div class="column is-5 is-offset-3">
                     <div class="container is-thing">
-                        <div class="box">
+                        <div class="box is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by4"> 
@@ -358,7 +372,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             <div class="columns pb-6">
                 <div class="column is-offset-6 is-5">
                     <div class="container is-thing">
-                        <div class="box">
+                        <div class="box  is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
@@ -378,7 +392,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
             <div class="columns pb-6">
                 <div class="column is-offset-3 is-5">
                     <div class="container is-thing">
-                        <div class="box">
+                        <div class="box  is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
@@ -398,15 +412,18 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
     </section>
     </div>
     <section class="section is-medium">
-        <div class="container is-fluid has-text-centered pb-6">
-            <div class="block"></div>
-                <p class="title  has-text-weight-bold">Other things</p>
+        <div class="columns is-centered">
+            <div class="column is-5">
+                <div class="container is-fluid has-text-centered">
+                    <p class="title  has-text-weight-bold">Other things</p>
+            </div>
             </div>
         </div>
+        
         <div class="columns is-centered has-text-justified">
            <div class="column is-2">
             <div class="container">
-                <div class="box">
+                <div class="box box-about">
                     <div class="columns">
                         <div class="column is-flex is-justify-content-space-between">
                             <span class="icon"></span><span class="icon "><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
@@ -425,11 +442,10 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#606396", en
                     <div class="columns">
                         <div class="column">
                             <p class="title is-5">Shiny</p>
-
                         </div>
-                        
                     </div>
                     
+                <button class="button is-rounded">Let's go!</button>
                 </div>
             </div>
            </div>
