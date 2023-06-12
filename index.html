@@ -42,7 +42,6 @@ html {
     */ 
     font-family: "Barlow";
     background-color: transparent;
-    color: var(--main-one);
 }
 
 .non-text {
@@ -52,13 +51,11 @@ html {
 #logo-text {
     font-family: "Major Mono Display"; 
     font-weight: 400; 
-    color: var(--main-one)"
 }
 
 .logo-io {
     font-family: "Major Mono Display";
     font-weight: 400;
-    color: var(--main-one);
 }
 
 .navbar-brand p {
@@ -121,7 +118,7 @@ html {
 }
 
 body {
-    background: hsla(34, 91%, 73%, 1);
+    background: #FBDCB4;
     color: var(--main-one)
 }
 
@@ -284,7 +281,7 @@ a:hover::before {
                     <p class="title is-size-2 has-text-weight-bold">About this place</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">Who I am and what I do</p>
                     <p style="position: relative" class="is-size-5 has-text-weight-light">Hello and welcome! This is the second home of 
-                        <a class="link" href="https://emr-dk.github.io">Emil</a>. I make things and do stuff. Most of it with data. Some of it is cool.  
+                        <a href="https://emr-dk.github.io">Emil</a>. I make things and do stuff. Most of it with data. Some of it is cool.  
                         My personal profile is where I test, store and do random experiments. This is where I (try) to put some of my bigger projects / ideas / things. 
                         It's not set in stone though (It also gives me a second place to try stuff out) - there's probably some cool stuff there as well. I hope you find my sites fun. At least not a waste of time </p>
                     <p class="is-size-5 has-text-weight-light">This is the second home of Emil (<a href="https://emr-dk.github.io">emr-dk</a>). My personal profile is where I test, store and do things as I feel like. This is where I put some of my bigger projects / ideas / things. 
@@ -462,11 +459,13 @@ a:hover::before {
         </div>
     </section>
     </div>
-    <section class="section is-medium">
+    <section style="border-top: 3px solid black; border-bottom: 3px solid black" class="section is-medium">
         <div class="columns is-centered">
             <div class="column is-5">
-                <div class="container is-fluid has-text-centered">
-                    <p class="title  has-text-weight-bold">Other things</p>
+                <div class="container">
+                    <p class="title is-size-2 has-text-weight-bold">Other things</p>
+                    <p class="subtitle is-size-3 has-text-weight-bold">Description of this part of the site</p>
+                    <p class="is-size-5 has-text-weight-light">Some things are either too small, out of place, too old or just too weird to be added above.</p>                     
             </div>
             </div>
         </div>
@@ -507,11 +506,10 @@ a:hover::before {
            </div>
         </div>
     </section>
-    <footer style="background-color: #0B4F6C" class="footer">
+    <footer style="background-color: #494456" class="footer">
         <div class="content has-text-centered">
-          <p>
-            <strong>Nothing more here</strong>
-          </p>
+            <p style="color: white" class="subtitle is-size-3 has-text-weight-bold">There's no more here, friend.</p>
+            <p style="color: white" class="is-size-5 has-text-weight-light">Made with love by Emil ❤️</p>
         </div>
       </footer>
 </body>
