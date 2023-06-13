@@ -220,21 +220,24 @@ a:hover::before {
 </style>
 <body>
     <div class="header">
-    <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://www.hvor.io">
-            <p>?!.io</p>
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-    </nav>
+    
     <!-- background-color: #DB5461; -->
     <section class="hero is-fullheight">
+        <hero class="hero-head">
+        <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="https://www.hvor.io">
+                <p>?!.io</p>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+        </nav>
+    </hero>
         <div class="hero-body">
     <!-- Hero head: will stick at the top -->
         <div class="container has-text-centered">
@@ -465,46 +468,98 @@ a:hover::before {
                 <div class="container">
                     <p class="title is-size-2 has-text-weight-bold">Other things</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">Description of this part of the site</p>
-                    <p class="is-size-5 has-text-weight-light">Some things are either too small, out of place, too old or just too weird to be added above.</p>                     
+                    <p class="is-size-5 has-text-weight-light">Some things are either too small, out of place, too old or just too weird to be added above.<span style="vertical-align: super; font-size: 0.75rem; font-style: italic">Might still be relevant though</span></p>                     
             </div>
             </div>
         </div>
         
-        <div class="columns is-centered has-text-justified">
-           <div class="column is-2">
-            <div class="container">
-                <div class="box box-about">
-                    <div class="columns">
-                        <div class="column is-flex is-justify-content-space-between">
-                            <span class="icon"></span><span class="icon "><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-                        </div>
+         <div class="columns is-centered has-text-justified">
+            <div class="column is-2">
+                 <div class="card">
+                     <div class="card-image">
+                       <figure class="image is-4by3">
+                         <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                       </figure>
+                     </div>
+                     <div class="card-content">
+                       <div class="media">
+                         <div class="media-content">
+                           <p class="title is-4">Shiny</p>
+                         </div>
+                       </div>
+                       <div class="content">
+                         I have an instance of Shiny running on a server. Here I display some data
+                       </div>
                     </div>
-                    <div class="columns is-centered">
-                        <div class="column">
-                            <div class="other-things-button">
-                                <span class="icon other-things-icon">
-                                    <i class="devicon-jupyter-plain-wordmark colored"></i>
-                                </span>
-                            </div>
-                                
-                        </div>
-                    </div>
-                    <div class="columns">
-                        <div class="column">
-                            <p class="title is-5">Shiny</p>
-                        </div>
-                    </div>
-                    
-                <button class="button is-rounded">Let's go!</button>
                 </div>
             </div>
+            <div class="column is-2">
+                <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="media pb-0">
+                        <div class="media-content">
+                          <p class="title is-5">Jupyter</p>
+                        </div>
+                      </div>
+                      <div class="content">
+                        <p class="is-8">
+                        I also have an instance of Jupyter (through Voila) running on a server. Here I also display some data
+                        </p>
+                    </div>
+                        <div class="container">
+                            <span><button class="button is-rounded">Lets go!</button></span>
+                        </div>
+                      
+                   </div>
+               </div>
            </div>
            <div class="column is-2">
-                <div class="box">
-                    <p class="title is-5">Jupyter</p>
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
                 </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Shiny</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </div>
+               </div>
            </div>
+       </div>
+       <div class="column is-2">
+        <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">Shiny</p>
+                </div>
+              </div>
+          
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </div>
+           </div>
+       </div>
+   </div>
         </div>
+         
     </section>
     <footer style="background-color: #494456" class="footer">
         <div class="content has-text-centered">
