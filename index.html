@@ -215,7 +215,12 @@ a:hover::before {
   height: 100%;
 }
 
-
+@media(max-width: 767px) { /* <== You can change this break point as per your  needs */
+  .reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
 
 </style>
 <body>
@@ -280,7 +285,7 @@ a:hover::before {
     </section>
     <section class="section is-medium">
         
-        <div style="" class="columns is-centered has-text-justified">
+        <div style="" class="columns reverse-columns is-centered has-text-justified">
             
             <div style="align-items: flex-end; display:flex" class="column is-4 flex">
                 <div style="position: relative" class="container">
