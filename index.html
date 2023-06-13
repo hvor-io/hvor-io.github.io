@@ -191,26 +191,24 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", en
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-a {
-	text-decoration: none;
-	color: #18272F;
-	font-weight: 700;
+.link {
+  color: black;
   position: relative;
 }
 
-a::before {
+.link::before {
   content: '';
   background-color: hsla(196, 61%, 58%, .75);
   position: absolute;
   left: 0;
   bottom: 3px;
   width: 100%;
-  height: 8px;
-  z-index: -1;
+  height: 5px;
+  z-index: 2;
   transition: all .3s ease-in-out;
 }
 
-a:hover::before {
+.link:hover::before {
   bottom: 0;
   height: 100%;
 }
@@ -297,11 +295,11 @@ a:hover::before {
                     <p class="title is-size-2 has-text-weight-bold">About this place</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">Who I am and what I do</p>
                     <p style="position: relative" class="is-size-5 has-text-weight-light">Hello and welcome! This is the second home of 
-                        <a href="https://emr-dk.github.io">Emil</a>. I make things and do stuff. Most of it with data. Some of it is cool.  
-                        <span id="logo-text">hvor.io</span> is where I (try) to put some of my bigger projects / ideas / things.  <span class="is-size-6">(It also gives me a second place to try stuff out)</span></p> 
+                        <span><a class="link" href="https://emr-dk.github.io">Emil</a></span>. I make things and do stuff. Most of it with data. Some of it is cool.  
+                        <a class="link" href="./"><span id="logo-text">hvor.io</span></a> is where I <span class="is-size-6">(try)</span> to put some of my bigger projects / ideas / things.  <span class="is-size-6">(It also gives me a second place to try stuff out)</span></p> 
                     <p style="position: relative" class="is-size-5 has-text-weight-light"><br>I have a background in geography and I have worked with data for a while now. Most of what you'll find is exploring ways of analysing and visualising data. 
-                        I do this for fun and to learn new things - and I hope it will help you learn new things as well. My main focuses are programming, statistical inference, machine learning and some deep learning.</p>
-                    <p style="position: relative" class="is-size-5 has-text-weight-light"><br>Don't hesitate to visit my personal profile, you'll probably find some cool stuff there as well. I hope you find my sites fun.</p>
+                        I do this for fun and to learn new things - and I hope it will help you learn new things as well. My main focuses are programming, statistical inference, machine learning and some deep learning. I don't mind when things look nice either.</p>
+                    <p style="position: relative" class="is-size-5 has-text-weight-light"><br>Don't hesitate to visit my <a class="link" href="emr-dk.github.io">personal profile</a>, you'll probably find some cool stuff there as well. I hope you find my sites fun.</p>
                     </div>
             </div>
         </div>
@@ -328,7 +326,7 @@ a:hover::before {
                     <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Data</h3>
-                    <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="subtitle is-6"> Gathering data from various sources such as surveys, databases, or external APIs. Then organizing and storing in a structured manner. This may involve cleaning the data by removing errors, inconsistencies, or duplicates.</p>
                     </div>
                 </div>
             </div>
@@ -337,7 +335,7 @@ a:hover::before {
                     <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
                     <h3 class="title is-5 has-text-weight-bold">Visualisation</h3>
-                    <p class="subtitle is-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
+                    <p class="subtitle is-6">Data visualization techniques, such as charts, graphs, or dashboards, are often employed to present the analyzed data in a clear and understandable format.</p>
                 </div>
                 </div>
             </div>
@@ -345,8 +343,8 @@ a:hover::before {
                 <div class="container">
                     <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Data</h3>
-                    <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h3 class="title is-5 has-text-weight-bold">Analysis</h3>
+                    <p class="subtitle is-6">This involves using statistical techniques, mathematical models, or data mining algorithms to uncover patterns, trends, or correlations within the data.</p>
                     </div>
                 </div>
             </div>
@@ -355,18 +353,20 @@ a:hover::before {
             <div class="column is-3">
                 <div class="container">
                         <div class="box thing-do">
-                        <span class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                        <h3 class="title is-5 has-text-weight-bold">Analytics</h3>
-                        <p class="subtitle is-6">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
-                    </div>
+                            <div class="container">
+                                <span class="icon mr-auto"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+                            </div>
+                            <h3 class="title is-5 has-text-weight-bold">Inference</h3>
+                            <p class="subtitle is-6">I try to make informed decisions and solve specific problems. Be it optimizing processes, identifying opportunities, or mitigating risks data-driven decision-making is a key aspect of my work</p>
+                        </div>
                     </div>
             </div>
             <div class="column is-3">
                 <div class="container">
                     <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Analytics</h3>
-                    <p class="subtitle is-6">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                    <h3 class="title is-5 has-text-weight-bold">Deep Learning and ML</h3>
+                    <p class="subtitle is-6">Using advanced statistical and mathematical methods is essential when wanting to gain as much knowledge as possible.</p>
                 </div>
                 </div>
             </div>
@@ -374,8 +374,8 @@ a:hover::before {
                 <div class="container">
                     <div class="box thing-do">
                     <span class="icon"><i class="fa-solid fa-inbox"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Data</h3>
-                    <p class="subtitle is-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h3 class="title is-5 has-text-weight-bold">Good times</h3>
+                    <p class="subtitle is-6">In the end it's all about having a good time doing what you're doing. I try to make my work exceptional and my mood positive.</p>
                     </div>
                 </div>
             </div>
@@ -415,7 +415,7 @@ a:hover::before {
                                 <div class="column">
                                     <h1 class="title is-6">En mere tak <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
                                     <h4 class="subtitle is-6">Finding what you need</h4>
-                                    <p>This project is something where someone did something awesome I have never tried something like this before</p>
+                                    <p>Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
                                 </div>
                             </div>
                         </div>
@@ -433,9 +433,13 @@ a:hover::before {
                                     </figure>
                                 </div>
                                 <div class="column">
-                                    <h1 class="title is-6">En plads i solen <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-6">Her er der altid sommer</h4>
-                                    <p>This project is something where someone did something awesome I have never tried something like this before</p>
+                                    <h1 class="title is-size-6">En plads i solen <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-size-6">Her er der altid sommer</h4>
+                                    <p>This project is a calculation and analysis of where the sun is at a given time on a given day in Copenhagen. 
+                                        This can be used to find the best place to sit in the sun.</p>
+                                    <div class="block">
+                                    <p class="is-size-7">Built with: <span class="icon"> <i class="devicon-python-plain"></i></span> <span class="icon"> <i class="devicon-numpy-original"></i></span> <span class="icon"> <i class="devicon-python-plain"></i></span></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -455,7 +459,7 @@ a:hover::before {
                                 <div class="column">
                                     <h1 class="title is-6">cphEO <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
                                     <h4 class="subtitle is-6">Satellite imagery application </h4>
-                                    <p>This project is something where someone did something awesome I have never tried something like this before</p>
+                                    <p>Initially developed as part of my work but was abandoned. Took it up in another context. It's all about working with Sentinel-2 satellite imagery automatically</p>
                                 </div>
                             </div>
                         </div>
@@ -475,7 +479,7 @@ a:hover::before {
                                 <div class="column">
                                     <h1 class="title is-6">Luck of the draw  <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
                                     <h4 class="subtitle is-6">Skill vs luck</h4>
-                                    <p>This project is something where someone did something awesome I have never tried something like this before</p>
+                                    <p>Ever wondered how important luck is in life? This simulation gives you an idea. Set some parameters and see who rises to the top.</p>
                                 </div>
                             </div>
                         </div>
