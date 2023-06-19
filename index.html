@@ -102,6 +102,10 @@ html {
     -webkit-backdrop-filter: blur(5px);
 }
 
+.is-thing-box:hover .thing-img {
+    filter: blur(0px);
+}
+
 .box {
     background-color: transparent;
     box-shadow: none; 
@@ -120,9 +124,6 @@ html {
 body {
     background: #FBDCB4;
     color: var(--main-one)
-}
-
-.has-text-weight-bold {
 }
 
 .turn-icon {
@@ -258,6 +259,14 @@ a:hover {
     filter: brightness(105%);
 }
 
+.thing-img {
+    border: 3px black solid;
+    filter: blur(2px)
+}
+
+.other-thing-image {
+    object-fit: contain;
+}
 </style>
 <body>
     <div class="header">
@@ -444,13 +453,13 @@ a:hover {
         </div>
             <div class="columns">
                 <div class="column is-offset-6 is-5">
-                    <a href="">
+                    <a href="./en-mere-tak-frontend">
                     <div class="container is-thing">
                         <div class="box is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
-                                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                                        <img  class="thing-img" src="./static/enmeretak.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
@@ -466,13 +475,13 @@ a:hover {
             </div>
             <div class="columns pb-6">
                 <div class="column is-5 is-offset-3">
-                    <a href="">
+                    <a href="./en-plads-i-solen-frontend">
                     <div class="container is-thing">
                         <div class="box is-thing-box">
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by4"> 
-                                        <img src="./static/enpladsisolen.PNG" alt="Placeholder image">
+                                        <img class="thing-img" src="./static/enpladsisolen.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
@@ -498,7 +507,7 @@ a:hover {
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
-                                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                                        <img class="thing-img" src="./static/cpheo.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
@@ -520,7 +529,7 @@ a:hover {
                             <div class="columns">
                                 <div class="column">
                                     <figure class="image is-4by3"> 
-                                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                                        <img  class="thing-img" src="./static/luckorskill.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
@@ -554,7 +563,7 @@ a:hover {
                  <div class="card other-thing other-thing-2">
                      <div class="card-image">
                        <figure class="image is-4by3">
-                         <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                         <img  class="other-thing-image" src="./static/shiny.png" alt="Placeholder image">
                        </figure>
                      </div>
                      <div class="card-content">
@@ -574,7 +583,7 @@ a:hover {
                 <div class="card other-thing other-thing-3">
                     <div class="card-image">
                       <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        <img class="other-thing-image" src="./static/voila-logo.svg" alt="Placeholder image">
                       </figure>
                     </div>
                     <div class="card-content">
@@ -598,7 +607,7 @@ a:hover {
             <div class="card other-thing other-thing-4">
                 <div class="card-image">
                   <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img class="other-thing-image"  src="./static/fast-api.png" alt="Placeholder image">
                   </figure>
                 </div>
                 <div class="card-content">
