@@ -224,6 +224,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", en
 .other-thing {
     border: 3px solid black;
     box-shadow: 3px 4px black;
+    height: 400px
 }
 
 
@@ -232,15 +233,48 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", en
 }
 
 .other-thing-2 {
+    background: hsla(40, 94%, 74%, 1);
+
+background: linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#fbd07c", endColorstr="#f7f779", GradientType=1 );
+    /*
     background: #FAF4B4
+    */
 }
 
 .other-thing-3 {
+    background: hsla(16, 100%, 76%, 1);
+
+background: linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ffa585", endColorstr="#ffeda0", GradientType=1 );
+    /*
     background: #E8FAB4
+    */
 }
 
 .other-thing-4 {
+    background: hsla(203, 89%, 71%, 1);
+
+background: linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#71c3f7", endColorstr="#f6f6f6", GradientType=1 );
+/*
     background: #D0FAB4
+    */
 }
 
 a {
@@ -265,7 +299,7 @@ a:hover {
 }
 
 .other-thing-image {
-    object-fit: contain;
+    object-fit: fill;
 }
 </style>
 <body>
@@ -561,15 +595,15 @@ a:hover {
             <div class="column is-2">
                 <a href="https://shiny.hvor.io">
                  <div class="card other-thing other-thing-2">
-                     <div class="card-image">
-                       <figure class="image is-4by3">
-                         <img  class="other-thing-image" src="./static/shiny.png" alt="Placeholder image">
+                     <div class="container pt-5">
+                       <figure class="image m-auto is-96x96 is-flex">
+                         <img  class="other-thing-image is-align-items-center" src="./static/shiny.png" alt="Placeholder image">
                        </figure>
                      </div>
                      <div class="card-content">
                        <div class="media">
-                         <div class="media-content">
-                           <p class="title is-4">Shiny</p>
+                         <div class="media-content has-text-centered">
+                           <p class="title is-4 has-text-weight-bold">Shiny</p>
                          </div>
                        </div>
                        <div class="content">
@@ -581,15 +615,15 @@ a:hover {
             </div>
             <div class="column is-2">
                 <div class="card other-thing other-thing-3">
-                    <div class="card-image">
-                      <figure class="image is-4by3">
-                        <img class="other-thing-image" src="./static/voila-logo.svg" alt="Placeholder image">
+                    <div class="container pt-5">
+                      <figure class="image m-auto is-96x96 is-flex">
+                        <img class="other-thing-image is-align-items-center" src="./static/voila-logo.svg" alt="Placeholder image">
                       </figure>
                     </div>
                     <div class="card-content">
                       <div class="media pb-0">
-                        <div class="media-content">
-                          <p class="title is-5">Jupyter</p>
+                        <div class="media-content  has-text-centered">
+                          <p class="title is-4 has-text-weight-bold">Jupyter</p>
                         </div>
                       </div>
                       <div class="content">
@@ -605,15 +639,15 @@ a:hover {
            <div class="column is-2">
             <a href="https://api.hvor.io">
             <div class="card other-thing other-thing-4">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img class="other-thing-image"  src="./static/fast-api.png" alt="Placeholder image">
-                  </figure>
-                </div>
+                <div class="container pt-5">
+                        <figure class="image is-96x96 m-auto is-flex">
+                            <img class="other-thing-image m-auto pt-auto is-align-items-center"  src="./static/fast-api.png" alt="Placeholder image">
+                        </figure>
+                    </div>
                 <div class="card-content">
                   <div class="media">
-                    <div class="media-content">
-                      <p class="title is-4">api</p>
+                    <div class="media-content  has-text-centered">
+                      <p class="title is-4 has-text-weight-bold">api</p>
                     </div>
                   </div>
                   <div class="content">
