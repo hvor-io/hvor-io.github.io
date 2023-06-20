@@ -190,6 +190,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", en
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 225px;
 }
 
 .link {
@@ -295,12 +296,16 @@ a:hover {
 
 .thing-img {
     border: 3px black solid;
-    filter: blur(2px)
 }
 
 .other-thing-image {
-    object-fit: fill;
+    object-fit: contain;
 }
+
+.test {
+    
+}
+
 </style>
 <body>
     <div class="header">
@@ -340,7 +345,7 @@ a:hover {
             </div>
         
         </div>
-        <div class="columns">
+        <div class="columns has-text-centered">
             <div class="is-offset-10 column">
                 <img style="height: 100px; transform: rotate(180deg)" src="./static/doodles/up-arrow.svg">
             </div>
@@ -464,7 +469,7 @@ a:hover {
         
     </section>
     <div class="container">
-        <div class="columns is-centered">
+        <div class="columns is-centered has-text-centered">
             <div class="column is-2">
                 <img style="height: 100px; transform: rotate(45deg)" src="./static/doodles/arrow-with-scribble.svg">
             </div>
@@ -478,53 +483,75 @@ a:hover {
             <div class="container">
                     <p class="title is-size-2 has-text-weight-bold">Things I have done</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">These are some of my favorite things</p>
-                    <p class="is-size-5 has-text-weight-light">Oi! I've obviously built some things. They are shown here (below) and illustrate some different techniques, ideas and weird whims.
+                    <p class="is-size-5 has-text-weight-light">Oi! I've obviously built some things. They are shown here (below 👇) and illustrate some different techniques, ideas and whatever I thought was fun at the time.
                         <br><br>
-                        You will find that ... 
+                        Some of the apps are truly finished, most of them are proof-of-concepts and will probably never leave Alpha. They all have links to the actual sites and also links to <span class"icon"> <i class="devicon-github-original colored"></i></span> where
+                        i try to create some <span class="is-italic">decent documentation</span>&#8482;. <br>
+                        <br>
+                        Most of the apps also have a backend which at the moment isn't public. This is mostly because I probably have some passwords in cleartext or the code is full-on spaghetti. 
                     </p>
             </div>
             </div>
         </div>
-            <div class="columns">
+            <div class="columns has-text-left">
                 <div class="column is-offset-6 is-5">
                     <a href="./en-mere-tak-frontend">
                     <div class="container is-thing">
-                        <div class="box is-thing-box">
+                        <div class="box is-thing-box test">
                             <div class="columns">
-                                <div class="column">
-                                    <figure class="image is-4by3"> 
-                                        <img  class="thing-img" src="./static/enmeretak.PNG" alt="Placeholder image">
+                                
+                                <div class="column is-9">
+                                    <h1 class="title is-2 has-text-weight-bold">En mere tak <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Finding what you need</h4>
+                                    
+                                </div>
+                                <div class="column is-3">
+                                    <figure class="image is-96x96"> 
+                                        <img  class="thing-img" src="./static/oie_icZPiTBBwsAt.png" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
-                                    <h1 class="title is-6">En mere tak <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-6">Finding what you need</h4>
-                                    <p>Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
                                 </div>
                             </div>
+                                <div class="columns">
+                                    <div class="column">
+                                        <p class="is-size-5 has-text-weight-bold pb-3">Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
+                                        <p class="has-text-weight-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                </div>
+                                <span class"icon"> <i class="devicon-github-original colored"></i></span>
+                            </div>
+                            
                         </div>
                     </div>
                     </a>
                 </div>
             </div>
-            <div class="columns pb-6">
-                <div class="column is-5 is-offset-3">
-                    <a href="./en-plads-i-solen-frontend">
+            <div class="columns has-text-left">
+                <div class="column is-offset-2 is-5">
+                    <a href="./en-mere-tak-frontend">
                     <div class="container is-thing">
-                        <div class="box is-thing-box">
+                        <div class="box is-thing-box test">
                             <div class="columns">
-                                <div class="column">
-                                    <figure class="image is-4by4"> 
-                                        <img class="thing-img" src="./static/enpladsisolen.PNG" alt="Placeholder image">
+                                
+                                <div class="column is-9">
+                                    <h1 class="title is-4 has-text-weight-bold">En plads i solen<span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Her er der altid sol</h4>
+                                    <p class="is-size-3"><nav class="level"><span class="icon level-item pr-2"> <i class="devicon-python-plain"></i></span> <span class="icon level-item"> <i class="devicon-numpy-original"></i></span> <span class="icon level-item"> <i class="devicon-fastapi-plain"></i></span></nav></p>
+                                    
+                                </div>
+                                <div class="column is-3">
+                                    <figure class="image is-96x96"> 
+                                        <img  class="thing-img" src="./static/enpladsisolen.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
-                                    <h1 class="title is-size-6">En plads i solen <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-size-6">Her er der altid sommer</h4>
-                                    <p>This project is a calculation and analysis of where the sun is at a given time on a given day in Copenhagen. 
-                                        This can be used to find the best place to sit in the sun.</p>
-                                    <div class="block">
-                                    <p class="is-size-7">Built with: <span class="icon"> <i class="devicon-python-plain"></i></span> <span class="icon"> <i class="devicon-numpy-original"></i></span> <span class="icon"> <i class="devicon-python-plain"></i></span></p>
+                                </div>
+                            </div>
+                                <div class="columns">
+                                    <div class="column">
+                                    <p>Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     </div>
                                 </div>
                             </div>
@@ -533,21 +560,32 @@ a:hover {
                     </a>
                 </div>
             </div>
-            <div class="columns pb-6">
+            <div class="columns has-text-left">
                 <div class="column is-offset-6 is-5">
-                    <a href="">
+                    <a href="./en-mere-tak-frontend">
                     <div class="container is-thing">
-                        <div class="box  is-thing-box">
+                        <div class="box is-thing-box test">
                             <div class="columns">
-                                <div class="column">
-                                    <figure class="image is-4by3"> 
-                                        <img class="thing-img" src="./static/cpheo.PNG" alt="Placeholder image">
+                                
+                                <div class="column is-9">
+                                    <h1 class="title is-4 has-text-weight-bold">Copenhagen EO <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Satellite imagery application</h4>
+                                    <p class="is-size-3"><nav class="level"><span class="icon level-item pr-2"> <i class="devicon-python-plain"></i></span> <span class="icon level-item"> <i class="devicon-numpy-original"></i></span> <span class="icon level-item"> <i class="devicon-fastapi-plain"></i></span></nav></p>
+                                    
+                                </div>
+                                <div class="column is-3">
+                                    <figure class="image is-96x96"> 
+                                        <img  class="thing-img" src="./static/cpheo.png" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
-                                    <h1 class="title is-6">cphEO <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-6">Satellite imagery application </h4>
-                                    <p>Initially developed as part of my work but was abandoned. Took it up in another context. It's all about working with Sentinel-2 satellite imagery automatically</p>
+                                </div>
+                            </div>
+                                <div class="columns">
+                                    <div class="column">
+                                    <p>Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -555,28 +593,39 @@ a:hover {
                     </a>
                 </div>
             </div>
-            <div class="columns pb-6">
-                <div class="column is-offset-3 is-5">
-                    <a href="">
+            <div class="columns has-text-left">
+                <div class="column is-offset-2 is-5">
+                    <a href="./en-mere-tak-frontend">
                     <div class="container is-thing">
-                        <div class="box  is-thing-box">
+                        <div class="box is-thing-box test">
                             <div class="columns">
-                                <div class="column">
-                                    <figure class="image is-4by3"> 
+                                
+                                <div class="column is-9">
+                                    <h1 class="title is-4 has-text-weight-bold">The luck guesstimator<span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Luck or skill</h4>
+                                    <p class="is-size-3"><nav class="level"><span class="icon level-item pr-2"> <i class="devicon-python-plain"></i></span> <span class="icon level-item"> <i class="devicon-numpy-original"></i></span> <span class="icon level-item"> <i class="devicon-fastapi-plain"></i></span></nav></p>
+                                    
+                                </div>
+                                <div class="column is-3">
+                                    <figure class="image is-96x96"> 
                                         <img  class="thing-img" src="./static/luckorskill.PNG" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="column">
-                                    <h1 class="title is-6">Luck of the draw  <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-6">Skill vs luck</h4>
-                                    <p>Ever wondered how important luck is in life? This simulation gives you an idea. Set some parameters and see who rises to the top.</p>
+                                </div>
+                            </div>
+                                <div class="columns">
+                                    <div class="column">
+                                    <p>Have you ever finished a meal or a pint and wondered - where can I go for a top up? This app is for you!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </a>
                 </div>
-        </div>
+            </div>
     </section>
     </div>
     <section style="border-top: 3px solid black; border-bottom: 3px solid black" class="section is-medium">
