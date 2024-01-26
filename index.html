@@ -14,6 +14,11 @@
   <!-- Devicons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -26,287 +31,12 @@
   <link href="./static/fontawesome/css/brands.css" rel="stylesheet">
   <link href="./static/fontawesome/css/solid.css" rel="stylesheet">
 
+  <!-- Main css -->
+  <link rel="stylesheet" href="./static/style.css">
+
+
 </head>
-<style>
-:root {
-    --main-one: black;
-    --main-two: #FDF9F4;
-    --main-text-fade: rgba(50, 8, 61, 0.7)
-}
-/*
-rgba(52,7,61,1) 25%, rgba(239,116,92,1) 84%)
-*/
-html {
-    /* 
-   
-    */ 
-    font-family: "Barlow";
-    background-color: transparent;
-}
 
-.non-text {
-    font-family: "Flow Circular";
-}
-
-#logo-text {
-    font-family: "Major Mono Display"; 
-    font-weight: 400; 
-}
-
-.logo-io {
-    font-family: "Major Mono Display";
-    font-weight: 400;
-}
-
-.navbar-brand p {
-    font-family: VT323;
-    font-weight: 400;
-    font-size: 1.5em;
-    color: rgb(52,7,61)
-}
-
-.title, .subtitle {
-    color: black
-}
-
-.navbar {
-    background-color: transparent;
-    color: #FAFAFA;
-    /* Måske?! 
-    border-bottom: rgba(52,7,61,0.4) solid 0.5px;
-    backdrop-filter: blur(1px)
-    */
-}
-
-.navbar-item {
-    color: #FAFAFA;
-}
-
-.is-thing-box {
-    transition: all 0.2s ease-in-out;
-    background: transparent;
-    border: 3px solid black;
-    position: relative;
-    box-shadow: none;
-}
-
-.is-thing-box:hover {
-    /*
-    box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
-    */
-    box-shadow: -4px 4px black;
-    transform: translateX(4px) translateY(-4px);
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.is-thing-box:hover .thing-img {
-    filter: blur(0px);
-}
-
-.box {
-    background-color: transparent;
-    box-shadow: none; 
-}
-
-.box-about {
-    border: 0.25rem solid;
-}
-
-.image-skills {
-    border-top-left-radius: 6px; 
-    border-top-right-radius: 6px;
-    width: 100%
-}
-
-body {
-    background: #FBDCB4;
-    color: var(--main-one)
-}
-
-.turn-icon {
-    transform: rotate(45deg);
-    transition: translate 0.5s ease-in-out;
-}
-
-.is-thing:hover .turn-icon {
-    transition: translate 0.3s ease-in-out;
-    transform: translate(5px, -5px) rotate(45deg);
-    
-}
-
-.header {
-    background: hsla(141, 81%, 87%, 1);
-    background: linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", endColorstr="#F7D486", GradientType=1 );
-}
-
-.middle {
-    background: hsla(141, 81%, 87%, 1);
-
-background: linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(211, 58%, 79%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(211, 58%, 79%, 1) 100%);
-
-background: -webkit-linear-gradient(270deg, hsla(141, 81%, 87%, 1) 0%, hsla(211, 58%, 79%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", endColorstr="#ABC9E9", GradientType=1 );
-}
-
-.things {
-    background: hsla(141, 81%, 87%, 1);
-
-background: linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", endColorstr="#F5BFD7", GradientType=1 );
-}
-
-.button {
-    border: 1px solid black; 
-    box-shadow: 3px 4px black;
-    background: #F5F4E9;
-    transition: all 0.2s ease-in-out;
-}
-
-.button:hover {
-    border: 1px solid black; 
-    background: #EBE9D2;
-    box-shadow: 1px 1px black;
-    transition: translateY(-4px);
-}
-
-.thing-do {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    height: 225px;
-}
-
-.link {
-  color: black;
-  position: relative;
-}
-
-.link::before {
-  content: '';
-  background-color: hsla(196, 61%, 58%, .75);
-  position: absolute;
-  left: 0;
-  bottom: 3px;
-  width: 100%;
-  height: 5px;
-  z-index: 2;
-  transition: all .3s ease-in-out;
-}
-
-.link:hover::before {
-  bottom: 0;
-  height: 100%;
-}
-
-@media(max-width: 767px) { /* <== You can change this break point as per your  needs */
-  .reverse-columns {
-    flex-direction: column-reverse;
-    display: flex;
-  }
-}
-
-.other-thing {
-    border: 3px solid black;
-    box-shadow: 3px 4px black;
-    height: 400px
-}
-
-
-.other-thing-1 {
-    background: #FAC4B4
-}
-
-.other-thing-2 {
-    background: hsla(40, 94%, 74%, 1);
-
-background: linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#fbd07c", endColorstr="#f7f779", GradientType=1 );
-    /*
-    background: #FAF4B4
-    */
-}
-
-.other-thing-3 {
-    background: hsla(16, 100%, 76%, 1);
-
-background: linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ffa585", endColorstr="#ffeda0", GradientType=1 );
-    /*
-    background: #E8FAB4
-    */
-}
-
-.other-thing-4 {
-    background: hsla(203, 89%, 71%, 1);
-
-background: linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#71c3f7", endColorstr="#f6f6f6", GradientType=1 );
-/*
-    background: #D0FAB4
-    */
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-
-}
-
-.other-thing:hover {
-    box-shadow: 1px 1px black;
-    transform: translateX(4px) translateY(4px);
-    cursor: pointer;
-    filter: brightness(105%);
-}
-
-.thing-img {
-    border: 3px black solid;
-}
-
-.other-thing-image {
-    object-fit: contain;
-}
-
-.test {
-    
-}
-
-</style>
 <body>
     <div class="header">
     
@@ -378,7 +108,7 @@ a:hover {
             </div>
             <div class="column is-5">
                 <div class="box box-about">
-                    <p class="title is-size-2 has-text-weight-bold">About this place</p>
+                    <p class="title is-size-2 has-text-weight-bold">About the site</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">Who I am and what I do</p>
                     <p style="position: relative" class="is-size-5 has-text-weight-light">Hello and welcome! This is the second home of 
                         <span><a class="link" href="https://emr-dk.github.io">Emil</a></span>. I make things and do stuff. Most of it with data. Some of it is cool.  
@@ -397,75 +127,91 @@ a:hover {
         <div class="columns is-centered">
             <div class="column is-5">
             <div class="container">
-                <p class="title is-size-2 has-text-weight-bold">Some of the things I do</p>
-                <p class="subtitle is-size-3 has-text-weight-bold">These are some of the things I know how to do</p>
-                <p class="is-size-5 has-text-weight-light pb-5">I've been doing this for some years now, which means i've gained some different skills. I'm not an expert in any of them but I know my way around. I've tried to list some of them below. <br><br>
+                <p class="title is-size-2 has-text-weight-bold">Some things I do</p>
+                <p class="subtitle is-size-3 has-text-weight-bold">Examples of what I can do</p>
+                <p class="is-size-5 has-text-weight-light pb-5">I've been doing this for some years now, which means i've gained some different skills. I've tried to list some of them below. <br><br>
                     But you probably have most success if you expect me to do some of the following:</p>          
                 </div>
             </div>
         </div>
         
-        <div class="columns is-centered">
-            
-            <div class="column is-3 is-centered">
-                <div class="container">
-                    <div class="box thing-do">
-                    <span class="icon"><i class="fa-solid fa-inbox"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Data</h3>
-                    <p class="subtitle is-6"> Gathering data from various sources such as surveys, databases, or external APIs. Then organizing and storing in a structured manner. This may involve cleaning the data by removing errors, inconsistencies, or duplicates.</p>
+        <div class="columns is-centered  has-text-justified">
+            <div class="column is-4 fadeInObs">
+                <div class="box service is-flex is-flex-direction-row is-align-items-flex-start is-justify-content-flex-start">
+                    <div class="icon-wrapper mr-4" id="service-1">
+                        <i class="fa-solid fa-circle"></i>
                     </div>
+                    <div class="text-wrapper">
+                        <p class="title is-size-4 has-text-weight-bold">Project scoping</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+
+                    </div>
+                    
                 </div>
             </div>
-            <div class="column is-3">
-                <div class="container">
-                    <div class="box thing-do">
-                    <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Visualisation</h3>
-                    <p class="subtitle is-6">Data visualization techniques, such as charts, graphs, or dashboards, are often employed to present the analyzed data in a clear and understandable format.</p>
-                </div>
-                </div>
-            </div>
-            <div class="column is-3 is-centered">
-                <div class="container">
-                    <div class="box thing-do">
-                    <span class="icon"><i class="fa-solid fa-inbox"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Analysis</h3>
-                    <p class="subtitle is-6">This involves using statistical techniques, mathematical models, or data mining algorithms to uncover patterns, trends, or correlations within the data.</p>
+            <div class="column is-4 fadeInObs">
+                <div class="box service is-flex is-flex-direction-row is-align-items-flex-start is-justify-content-flex-start">
+                    <div class="icon-wrapper mr-4" id="service-2">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="title is-size-4 has-text-weight-bold">All things data</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="columns is-centered">
-            <div class="column is-3">
-                <div class="container">
-                        <div class="box thing-do">
-                            <div class="container">
-                                <span class="icon mr-auto"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                            </div>
-                            <h3 class="title is-5 has-text-weight-bold">Inference</h3>
-                            <p class="subtitle is-6">I try to make informed decisions and solve specific problems. Be it optimizing processes, identifying opportunities, or mitigating risks data-driven decision-making is a key aspect of my work</p>
-                        </div>
+            <div class="column is-4 fadeInObs">
+                <div class="box service is-flex is-flex-direction-row is-align-items-flex-start is-justify-content-flex-start">
+                    <div class="icon-wrapper mr-4" id="service-3">
+                        <i class="fa-solid fa-circle"></i>
                     </div>
-            </div>
-            <div class="column is-3">
-                <div class="container">
-                    <div class="box thing-do">
-                    <span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Deep Learning and ML</h3>
-                    <p class="subtitle is-6">Using advanced statistical and mathematical methods is essential when wanting to gain as much knowledge as possible.</p>
-                </div>
+                    <div class="text-wrapper">
+                        <p class="title is-size-4 has-text-weight-bold">Managing infrastructure</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+
+                    </div>
+                    
                 </div>
             </div>
-            <div class="column is-3 is-centered">
-                <div class="container">
-                    <div class="box thing-do">
-                    <span class="icon"><i class="fa-solid fa-inbox"></i></span>
-                    <h3 class="title is-5 has-text-weight-bold">Good times</h3>
-                    <p class="subtitle is-6">In the end it's all about having a good time doing what you're doing. I try to make my work exceptional and my mood positive.</p>
+            <div class="column is-4 fadeInObs">
+                <div class="box service is-flex is-flex-direction-row is-align-items-flex-start is-justify-content-flex-start">
+                    <div class="icon-wrapper mr-4" id="service-4">
+                        <i class="fa-solid fa-circle"></i>
                     </div>
+                    <div class="text-wrapper">
+                        <p class="title is-size-4 has-text-weight-bold">Value added services</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
+        <div class="columns is-centered">
+            <div class="column is-8 fadeInObs">
+                <div class="box service is-flex is-flex-direction-row is-align-items-flex-start is-justify-content-flex-start">
+                    <div class="icon-wrapper mr-4"  id="service-5">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="title is-size-4 has-text-weight-bold">Even more things!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+
+                    </div>
+                    
+                    <div class="end-wrapper">
+                        <span class="icon is-large">
+                            <i class="fa-solid fa-arrow-left fa-lg"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
         
     </section>
     <div class="container">
@@ -481,7 +227,7 @@ a:hover {
         <div class="columns is-centered">
             <div class="column is-5">
             <div class="container">
-                    <p class="title is-size-2 has-text-weight-bold">Things I have done</p>
+                    <p class="title is-size-2 has-text-weight-bold">Ting jeg har lavet</p>
                     <p class="subtitle is-size-3 has-text-weight-bold">These are some of my favorite things</p>
                     <p class="is-size-5 has-text-weight-light">Oi! I've obviously built some things. They are shown here (below 👇) and illustrate some different techniques, ideas and whatever I thought was fun at the time.
                         <br><br>
@@ -493,38 +239,67 @@ a:hover {
             </div>
             </div>
         </div>
-            <div class="columns has-text-left">
+        <div class="column is-offset-6 is-5">
+            <a href="./en-mere-tak-frontend">
+            <div class="container">
+                <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                    <div class="logo-wrapper mr-4 mt-4">
+                        <figure class="image is-64x64 logo">
+                            <img  class="image is-64x64 logo" src="./static/test/skov.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="text-wrapper">
+                        <h1 class="title is-2 has-text-weight-bold">Grønne øer <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                        <h4 class="subtitle is-5 mb-0">Biodiversitetskortlægning</h4>
+                        <p class="is-size-5 has-text-weight-bold pb-3">Have you ever needed the shortest route to the nearest pub?</p>
+                        <p class="has-text-weight-medium">This app uses a custom routing logic, built with pgRouting in postgresql, and distributes it through a custom api built on FastAPI. Pretty neat. Honestly
+                            most of the work went into building the card stack.</p>
+                    </div>  
+                </div><
+            </div>
+            </a>
+        </div>
+    </div>
+        <div class="columns has-text-left">
+            <div class="column is-offset-2 is-5">
+                <a href="./en-mere-tak-frontend">
+                <div class="container">
+                    <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                        <div class="logo-wrapper mr-4 mt-4">
+                            <figure class="image is-64x64 logo">
+                                <img  class="image is-64x64 logo" src="./static/test/lyn2.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="text-wrapper">
+                            <h1 class="title is-2 has-text-weight-bold">Lynafleder <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                            <h4 class="subtitle is-5 mb-0">Lynet slår ikke ned samme sted to gange! ... </h4>
+                            <p class="is-size-5 has-text-weight-bold pb-3">Spring is finally here and you wanna soak up some rays from the ☀️</p>
+                            <p>This application is mostly backend at the moment. It's built on a combination of python libraries and GRASS GIS functionality for the preprocessing. Still figuring out how to best display the data 
+                                through a frontend.
+                            </p>
+                        </div>  
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
                 <div class="column is-offset-6 is-5">
                     <a href="./en-mere-tak-frontend">
-                    <div class="container is-thing">
-                        <div class="box is-thing-box test">
-                            <div class="columns">
-                                
-                                <div class="column is-9">
-                                    <h1 class="title is-2 has-text-weight-bold">En mere tak <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-5 mb-0">Finding what you need</h4>
-                                    
-                                </div>
-                                <div class="column is-3">
-                                    <figure class="image is-96x96"> 
-                                        <img  class="thing-img" src="./static/oie_icZPiTBBwsAt.png" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="column">
-                                </div>
+                    <div class="container">
+                        <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                            <div class="logo-wrapper mr-4 mt-4">
+                                <figure class="image is-64x64 logo">
+                                    <img  class="image is-64x64 logo" src="./static/test/oel2.png" alt="Placeholder image">
+                                </figure>
                             </div>
-                                <div class="columns">
-                                    <div class="column">
-                                        <p class="is-size-5 has-text-weight-bold pb-3">Have you ever needed the shortest route to the nearest pub?</p>
-                                        <p class="has-text-weight-medium">This app uses a custom routing logic, built with pgRouting in postgresql, and distributes it through a custom api built on FastAPI. Pretty neat. Honestly
-                                            most of the work went into building the card stack.
-                                        </p>
-                                    </div>
-                                </div>
-                                <span class"icon"> <i class="devicon-github-original colored"></i></span>
-                            </div>
-                            
-                        </div>
+                            <div class="text-wrapper">
+                                <h1 class="title is-2 has-text-weight-bold">En mere tak <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                <h4 class="subtitle is-5 mb-0">Finding what you need</h4>
+                                <p class="is-size-5 has-text-weight-bold pb-3">Have you ever needed the shortest route to the nearest pub?</p>
+                                <p class="has-text-weight-medium">This app uses a custom routing logic, built with pgRouting in postgresql, and distributes it through a custom api built on FastAPI. Pretty neat. Honestly
+                                    most of the work went into building the card stack.</p>
+                            </div>  
+                        </div><
                     </div>
                     </a>
                 </div>
@@ -532,31 +307,21 @@ a:hover {
             <div class="columns has-text-left">
                 <div class="column is-offset-2 is-5">
                     <a href="./en-mere-tak-frontend">
-                    <div class="container is-thing">
-                        <div class="box is-thing-box test">
-                            <div class="columns">
-                                
-                                <div class="column is-9">
-                                    <h1 class="title is-2 has-text-weight-bold">En plads i solen<span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-5 mb-0">Her er der altid sol</h4>
-                                </div>
-                                <div class="column is-3">
-                                    <figure class="image is-96x96"> 
-                                        <img  class="thing-img" src="./static/enpladsisolen.PNG" alt="Placeholder image">
-                                    </figure>
-                                </div>
-                                <div class="column">
-                                </div>
+                    <div class="container">
+                        <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                            <div class="logo-wrapper mr-4 mt-4">
+                                <figure class="image is-64x64 logo">
+                                    <img  class="image is-64x64 logo" src="./static/test/sol2.png" alt="Placeholder image">
+                                </figure>
                             </div>
-                                <div class="columns">
-                                    <div class="column">
-                                    <p class="is-size-5 has-text-weight-bold pb-3">Spring is finally here and you wanna soak up some rays from the ☀️</p>
-                                    <p>This application is mostly backend at the moment. It's built on a combination of python libraries and GRASS GIS functionality for the preprocessing. Still figuring out how to best display the data 
-                                        through a frontend.
-                                    </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="text-wrapper">
+                                <h1 class="title is-2 has-text-weight-bold">En plads i solen <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                <h4 class="subtitle is-5 mb-0">Her er der altid sol</h4>
+                                <p class="is-size-5 has-text-weight-bold pb-3">Spring is finally here and you wanna soak up some rays from the ☀️</p>
+                                <p>This application is mostly backend at the moment. It's built on a combination of python libraries and GRASS GIS functionality for the preprocessing. Still figuring out how to best display the data 
+                                    through a frontend.
+                                </p>
+                            </div>  
                         </div>
                     </div>
                     </a>
@@ -565,33 +330,22 @@ a:hover {
             <div class="columns has-text-left">
                 <div class="column is-offset-6 is-5">
                     <a href="./en-mere-tak-frontend">
-                    <div class="container is-thing">
-                        <div class="box is-thing-box test">
-                            <div class="columns">
-                                
-                                <div class="column is-9">
-                                    <h1 class="title is-2 has-text-weight-bold">Copenhagen EO <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-5 mb-0">Satellite imagery application</h4>
-                                    
-                                </div>
-                                <div class="column is-3">
-                                    <figure class="image is-96x96"> 
-                                        <img  class="thing-img" src="./static/cpheo.png" alt="Placeholder image">
+                    <div class="container">
+                            <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                                <div class="logo-wrapper mr-4 mt-4">
+                                    <figure class="image is-64x64 logo">
+                                        <img  class="image is-64x64 logo" src="./static/test/rain.png" alt="Placeholder image">
                                     </figure>
                                 </div>
-                                <div class="column">
-                                </div>
-                            </div>
-                                <div class="columns">
-                                    <div class="column">
-                                    <p  class="is-size-5 has-text-weight-bold pb-3">Trying to make downloading and working with Sentinel imagery less tedious</p>
+                                <div class="text-wrapper">
+                                    <h1 class="title is-2 has-text-weight-bold">Regn <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Satellitbilleder - nemt!</h4>
+                                    <p class="is-size-5 has-text-weight-bold pb-3">Trying to make downloading and working with Sentinel imagery less tedious</p>
                                     <p>When the EU's Sentinel-2 satellites launched getting access to data was a pain in the ..., so I created an application that could automate most of the tasks regarding this. 
-                                       We ended up using it for a short while but have gone different ways. Thought it was a shame if it dissapeared into the ether, though. 
+                                       We ended up using it for a short while but have gone different ways. Thought it was a shame if it dissapeared into the ether, though.
                                     </p>
-                                    </div>
-                                </div>
+                                </div>  
                             </div>
-                        </div>
                     </div>
                     </a>
                 </div>
@@ -599,30 +353,22 @@ a:hover {
             <div class="columns has-text-left">
                 <div class="column is-offset-2 is-5">
                     <a href="./en-mere-tak-frontend">
-                    <div class="container is-thing">
-                        <div class="box is-thing-box test">
-                            <div class="columns">
-                                
-                                <div class="column is-9">
-                                    <h1 class="title is-2 has-text-weight-bold">Luck guesstimator<span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
-                                    <h4 class="subtitle is-5 mb-0">How lucky are you?</h4>
-                                  </div>
-                                <div class="column is-3">
-                                    <figure class="image is-96x96"> 
-                                        <img  class="thing-img" src="./static/luckorskill.PNG" alt="Placeholder image">
+                    <div class="container">
+                            <div class="box app-container is-flex is-flex-direction-row is-align-items-flex-start">
+                                <div class="logo-wrapper mr-4 mt-4">
+                                    <figure class="image is-64x64 logo">
+                                        <img  class="image is-64x64 logo" src="./static/test/EO.png" alt="Placeholder image">
                                     </figure>
                                 </div>
-                                <div class="column">
-                                </div>
+                                <div class="text-wrapper">
+                                    <h1 class="title is-2 has-text-weight-bold">Jordobservation <span class="icon turn-icon"><i class="fa-solid fa-arrow-up"></i></span></h1>
+                                    <h4 class="subtitle is-5 mb-0">Satellitbilleder - nemt!</h4>
+                                    <p class="is-size-5 has-text-weight-bold pb-3">Trying to make downloading and working with Sentinel imagery less tedious</p>
+                                    <p>When the EU's Sentinel-2 satellites launched getting access to data was a pain in the ..., so I created an application that could automate most of the tasks regarding this. 
+                                       We ended up using it for a short while but have gone different ways. Thought it was a shame if it dissapeared into the ether, though.
+                                    </p>
+                                </div>  
                             </div>
-                                <div class="columns">
-                                    <div class="column">
-                                    <p class="is-size-5 has-text-weight-bold pb-3">How important is luck or skill - based on a <a class="link" href="https://www.youtube.com/watch?v=3LopI4YeC4I">veritasium</a> video</p>
-                                    <p>So. How important is luck and skill in life? Watch the video above to find out. For me it was an interesting experiment to try and implement. He basically gives away the method anyway but why not try it anyway?</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     </a>
                 </div>
@@ -634,14 +380,34 @@ a:hover {
         <div class="columns is-centered">
             <div class="column is-5">
                 <div class="container">
-                    <p class="title is-size-2 has-text-weight-bold">Other things</p>
-                    <p class="subtitle is-size-3 has-text-weight-bold">Description of this part of the site</p>
+                    <p class="title is-size-2 has-text-weight-bold">Værktøjer</p>
+                    <p class="subtitle is-size-3 has-text-weight-bold">Det som kører i baggrunden</p>
                     <p class="is-size-5 has-text-weight-light">Some things are either too small, out of place, too old or just too weird to be added above.<span style="vertical-align: super; font-size: 0.75rem; font-style: italic">Might still be relevant though</span></p>                     
             </div>
             </div>
         </div>
-        
          <div class="columns is-centered has-text-justified">
+            <div class="column is-2">
+                <a href="https://shiny.hvor.io">
+                 <div class="card other-thing other-thing-5">
+                     <div class="container pt-5">
+                       <figure class="image m-auto is-96x96 is-flex">
+                         <img  class="other-thing-image is-align-items-center" src="./static/shiny.png" alt="Placeholder image">
+                       </figure>
+                     </div>
+                     <div class="card-content">
+                       <div class="media">
+                         <div class="media-content has-text-centered">
+                           <p class="title is-4 has-text-weight-bold">Basemap</p>
+                         </div>
+                       </div>
+                       <div class="content">
+                         I have an instance of Shiny running on a server. Here I display some data. 
+                       </div>
+                    </div>
+                </a>
+                </div>
+            </div>
             <div class="column is-2">
                 <a href="https://shiny.hvor.io">
                  <div class="card other-thing other-thing-2">
@@ -707,35 +473,7 @@ a:hover {
            </div>
         </a>
        </div>
-       
-        <!--
-       <div class="column is-2">
-        <div class="card other-thing other-thing-4">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">Shiny</p>
-                </div>
-              </div>
-          
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </div>
-           </div>
-       </div>
-        </div>
-        -->
-        </div>
-    <!--UNUSED BUTTON :(
-                                <div class="container">
-                            <span><button class="button is-rounded">Lets go!</button></span>
-                        </div>
-    -->
+    </div>
     </section>
     <footer style="background-color: #494456" class="footer">
         <div class="content has-text-centered">
@@ -744,5 +482,22 @@ a:hover {
         </div>
       </footer>
 </body>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    // Loop over the entries
+    entries.forEach(entry => {
+    // If the element is visible
+        if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('animate__animatedanimate__fadeInUp');
+        }
+  });
+    
+});
+
+// Tell the observer which elements to track
+observer.observe(document.querySelector('.fadeInObs'));
+</script>
 
 </html>
