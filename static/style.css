@@ -192,7 +192,7 @@ body {
     }
     
 #brown {
-        background-color: #e1a95f
+        background-color: #E7AF95;
     }
     
 #beige {
@@ -208,12 +208,21 @@ body {
     }
 
 .app-container {
-    min-height: 250px;
+    min-height: 150px;
+    width: 150px;
     transition: all 0.4s ease-in-out;
     background: transparent;
     border: 3px solid black;
     position: relative;
-    box-shadow: -7px 7px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.app-container {
+    box-shadow: 5px 5px 0px #eb452b, 
+                  10px 10px 0px #efa032, 
+                  15px 15px 0px #46b59b
 }
 
 .app-container:hover {
@@ -227,6 +236,10 @@ body {
     filter: blur(0px);
 }
 
+.logo {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;*/
+}
 /*
 
  TOOLS
