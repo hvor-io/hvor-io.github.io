@@ -11,8 +11,39 @@
 /*
 rgba(52,7,61,1) 25%, rgba(239,116,92,1) 84%)
 */
-html, body {
 
+
+@font-face {
+    font-family: enmere;
+    src: url("/static/fonts/Bubble Garden Regular.ttf");
+}
+
+@font-face {
+    font-family: solskin;
+    src: url("/static/fonts/HelloKetta-d99oX.ttf");
+}
+
+@font-face {
+    font-family: regnvejr;
+    src: url("/static/fonts/Pumpkin Bites.ttf");
+}
+
+@font-face {
+    font-family: regnvejr_layer;
+    src: url("/static/fonts/Pumpkin Bites Layer.ttf");
+}
+
+@font-face {
+    font-family: groent;
+    src: url("/static/fonts/Wonderly.otf");
+}
+
+@font-face {
+    font-family: lynafleder;
+    src: url("/static/fonts/SugarpunchDEMO.otf");
+}
+
+html, body {
     font-family: "Barlow" !important;
 }
 
@@ -130,11 +161,12 @@ body {
 
 */
 
+li:nth-child(n+1) {
+    padding-top: 40px;
+}
 
-.service:hover {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
+li > div {
+    padding-left: 10px;
 }
 
 .box-about {
@@ -142,23 +174,6 @@ body {
     background: rgba(239, 222, 205, 0.25)
 }
 
-.image-skills {
-    border-top-left-radius: 6px; 
-    border-top-right-radius: 6px;
-    width: 100%
-}
-
-
-.turn-icon {
-    transform: rotate(45deg);
-    transition: translate 0.5s ease-in-out;
-}
-
-.is-thing:hover .turn-icon {
-    transition: translate 0.3s ease-in-out;
-    transform: translate(5px, -5px) rotate(45deg);
-    
-}
 
 
 /* 
@@ -371,6 +386,40 @@ a {
 #service-5 {
     color: #ee9b00;
 }
+
+/* different logo fonts */
+
+.font-lynafleder {
+    font: 1.5em lynafleder !important;
+}
+.font-solskin {
+    font: 3em solskin !important;
+}
+
+.font-groent {
+    font: 3em groent !important;
+}
+
+.font-enmere {
+    font: 2em enmere !important;
+}
+
+.font-regnvejr-navn {
+    font: 2em regnvejr;
+    color:black;
+    position: relative;
+    z-index: 1;
+}
+
+.font-regnvejr-navn::after {
+    content: "regnen";
+    font-family: regnvejr_layer;
+    color:white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:0;
+   }
 
 /* måske 
 
