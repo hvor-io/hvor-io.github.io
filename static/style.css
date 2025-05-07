@@ -13,34 +13,45 @@ rgba(52,7,61,1) 25%, rgba(239,116,92,1) 84%)
 */
 
 
+.logo {
+    border-radius: 4px;
+}
+
+
+
 @font-face {
     font-family: enmere;
-    src: url("/static/fonts/Bubble Garden Regular.ttf");
+    src: url("fonts/enmere.ttf");
+}
+
+@font-face {
+    font-family: omvej;
+    src: url("fonts/RockyToRoad.otf");
 }
 
 @font-face {
     font-family: solskin;
-    src: url("/static/fonts/HelloKetta-d99oX.ttf");
+    src: url("fonts/HelloKetta-d99oX.ttf");
 }
 
 @font-face {
     font-family: regnvejr;
-    src: url("/static/fonts/Pumpkin Bites.ttf");
+    src: url("fonts/Pumpkin Bites.ttf");
 }
 
 @font-face {
     font-family: regnvejr_layer;
-    src: url("/static/fonts/Pumpkin Bites Layer.ttf");
+    src: url("fonts/Pumpkin Bites Layer.ttf");
 }
 
 @font-face {
     font-family: groent;
-    src: url("/static/fonts/Wonderly.otf");
+    src: url("fonts/Wonderly.otf");
 }
 
 @font-face {
     font-family: lynafleder;
-    src: url("/static/fonts/SugarpunchDEMO.otf");
+    src: url("fonts/SugarpunchDEMO.otf");
 }
 
 html, body {
@@ -80,43 +91,27 @@ body {
 }
 
 
-
-.button {
-    border: 1px solid black; 
-    box-shadow: 3px 4px black;
-    background: #F5F4E9;
-    transition: all 0.2s ease-in-out;
-}
-
-.button:hover {
-    border: 1px solid black; 
-    background: #EBE9D2;
-    box-shadow: 1px 1px black;
-    transition: translateY(-4px);
-}
-
-
 .link {
     color: black;
     position: relative;
-  }
-  
-  .link::before {
-    content: '';
-    background-color: hsla(196, 61%, 58%, .75);
-    position: absolute;
-    left: 0;
-    bottom: 3px;
-    width: 100%;
-    height: 5px;
-    z-index: 2;
-    transition: all .3s ease-in-out;
-  }
-  
-  .link:hover::before {
-    bottom: 0;
-    height: 100%;
-  }
+}
+
+.link::before {
+content: '';
+background-color: hsla(196, 61%, 58%, .75);
+position: absolute;
+left: 0;
+bottom: 3px;
+width: 100%;
+height: 5px;
+z-index: 2;
+transition: all .3s ease-in-out;
+}
+
+.link:hover::before {
+bottom: 0;
+height: 100%;
+}
   
 
 /* 
@@ -175,7 +170,6 @@ li > div {
 }
 
 
-
 /* 
 
  PROJECTS, ETC 
@@ -223,33 +217,24 @@ li > div {
     }
 
 .app-container {
-    min-height: 150px;
-    width: 150px;
-    transition: all 0.4s ease-in-out;
-    background: transparent;
-    border: 3px solid black;
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column; 
 }
 
-.app-container {
-    box-shadow: 5px 5px 0px #eb452b, 
-                  10px 10px 0px #efa032, 
-                  15px 15px 0px #46b59b
+/* box-shadow: 5px 5px 0px #eb452b, 
+10px 10px 0px #efa032, 
+15px 15px 0px #46b59b
+*/ 
+.app {
+    transition: all 1s ease-in-out; 
+    border: 2px solid black;
+    margin-bottom: 8px;
+    border-radius: 5px;
 }
 
-.app-container:hover {
-    cursor: pointer;
-    opacity: 0.5;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
+.app:hover a {
+    
 }
 
-.app-container:hover .thing-img {
-    filter: blur(0px);
-}
+
 
 .logo {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -262,135 +247,13 @@ li > div {
 */
 
 
-.thing-do {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    height: 225px;
-}
-
-@media(max-width: 767px) { /* <== You can change this break point as per your  needs */
-  .reverse-columns {
-    flex-direction: column-reverse;
-    display: flex;
-  }
-}
-
-.other-thing {
-    border: 3px solid black;
-    box-shadow: 3px 4px black;
-    height: 400px
-}
-
-
-.other-thing-1 {
-    background: #FAC4B4
-}
-
-.other-thing-2 {
-    background: hsla(40, 94%, 74%, 1);
-    background: linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(40, 94%, 74%, 1) 0%, hsla(60, 89%, 72%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#fbd07c", endColorstr="#f7f779", GradientType=1 );
-    /*
-    background: #FAF4B4
-    */
-}
-
-.other-thing-3 {
-    background: hsla(16, 100%, 76%, 1);
-    background: linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(16, 100%, 76%, 1) 0%, hsla(49, 100%, 81%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ffa585", endColorstr="#ffeda0", GradientType=1 );
-    /*
-    background: #E8FAB4
-    */
-}
-
-.other-thing-4 {
-    background: hsla(203, 89%, 71%, 1);
-    background: linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(203, 89%, 71%, 1) 0%, hsla(0, 0%, 96%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#71c3f7", endColorstr="#f6f6f6", GradientType=1 );
-/*
-    background: #D0FAB4
-    */
-}
-
-.other-thing-5 {
-    background: hsla(0, 0%, 100%, 1);
-    background: linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(299, 85%, 90%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(299, 85%, 90%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(0, 0%, 100%, 1) 0%, hsla(299, 85%, 90%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#facefb", GradientType=1 );
-}
-
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.other-thing:hover {
-    box-shadow: 1px 1px black;
-    transform: translateX(4px) translateY(4px);
-    cursor: pointer;
-    filter: brightness(105%);
-}
-
-.app-img {
-    border: 3px black solid;
-}
-
-.other-thing-image {
-    object-fit: contain;
-}
-
-.services {
-
-}
-
-.service {
-    background: rgba(201, 227, 227, 0.25); 
-    /*#C9E3E3;*/
-    border: dashed black 3px;
-    border-radius: 25px;
-}
-
-.logo {
-    border-radius: 4px;
-}
-
-#service-1 {
-    color: #d62828;
-}
-
-#service-2 {
-    color: #f77f00;
-}
-
-#service-3 {
-    color: #eae2b7;
-}
-
-#service-4 {
-    color: #003049;
-}
-
-#service-5 {
-    color: #ee9b00;
-}
 
 /* different logo fonts */
 
+
 .font-lynafleder {
     font: 1.5em lynafleder !important;
+    word-break: keep-all;
 }
 .font-solskin {
     font: 3em solskin !important;
@@ -400,33 +263,32 @@ a {
     font: 3em groent !important;
 }
 
+.font-omvej {
+    font: 3em omvej !important;
+}
+
 .font-enmere {
     font: 2em enmere !important;
 }
 
 .font-regnvejr-navn {
+    padding-left: 4;
     font: 2em regnvejr;
-    color:black;
+    color:#06537A;
     position: relative;
     z-index: 1;
+    word-break: keep-all;
 }
 
-.font-regnvejr-navn::after {
-    content: "regnen";
+.font-regnvejr-navn::before {
+    padding-left: 4;
+    content: "regnvejr";
     font-family: regnvejr_layer;
     color:white;
     position: absolute;
     left: 0;
     top: 0;
-    z-index:0;
+    z-index:-1;
+    word-break: keep-all;   
    }
 
-/* måske 
-
-https://getcssscan.com/css-box-shadow-examples
-box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-
-box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-
-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-*/

@@ -36,7 +36,19 @@
 
 
 </head>
-
+    <style>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) rotate(180deg);
+            }
+            40% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            60% {
+                transform: translateY(-10px) rotate(180deg);
+            }
+        }
+    </style>
 <body>
     <div class="header">
         <section class="hero is-fullheight">
@@ -53,13 +65,9 @@
                 <div class="container has-text-centered">
                     <div class="column">
                         <p class="title is-size-1 has-text-weight-bold">
-                        Hvor ting laves
-                        </p>
-                        <p class="subtitle has-text-weight-medium is-size 4">
-                        mest for sjov
+                        Hvor ting bliver til
                         </p>
                         <p id="logo-text" class="title is-size-4 pt-3">
-                            hvor.<span class="logo-io">io</span>
                         </p>
                         
                     </div>
@@ -67,7 +75,7 @@
             </div>
             <div class="columns has-text-centered">
                 <div class="is-offset-10 column">
-                    <img style="height: 100px; transform: rotate(180deg)" src="./static/svgs/doodles/up-arrow.svg">
+                    <img style="height: 100px; transform: rotate(180deg); animation: bounce 2s infinite;" src="./static/svgs/doodles/up-arrow.svg">
                 </div>
             </div>
         </section>
@@ -85,13 +93,11 @@
                 </div>
                 <div class="column is-5">
                     <div class="box box-about">
-                        <p class="title is-size-2 has-text-weight-bold">Om stedet her</p>
-                        <p class="subtitle is-size-3 has-text-weight-normal">Eller hvorfor siden findes</p>
-                        <p style="position: relative" class="is-size-5 has-text-weight-normal">Hej og velkommen! Dette er <span><a class="link" href="https://emr-dk.github.io">mit</a></span> andet hjem. Her udstiller jeg nogle af de ting jeg laver der på ét niveau er mere færdigbagt - men ikke nødvendigvis. Det kan jo være du synes det er fedt!  
-                            <br><br>hvor.io er hvor jeg <span class="is-size-6">(prøver at)</span> udfolde mig i mere app-orienterede kontekster. 
-                        <p style="position: relative" class="is-size-5 has-text-weight-normal"><br>Temaet for det meste du finder her er data og geografi - ikke overraskende givet min baggrund som geograf. 
-                            Vigtigst at vide er dog at jeglaver de her ting fordi jeg synes det er sjovt og fordi det giver mig mulighed for at lære nyt. Måske det også kan give dig inspiration til noget nyt?</p>
-                        <p style="position: relative" class="is-size-5 has-text-weight-normal"><br>Du bør også besøge min <a class="link" href="emr-dk.github.io">personlige profil</a> - kan være der er noget fedt der også. Håber jeg hører fra dig, eller møder dig ude IRL.</p>
+                        <p class="title is-size-2 has-text-weight-bold">Om det sted her</p>
+                        <p style="position: relative" class="is-size-5 has-text-weight-normal">Hej og velkommen! Dette er <span><a class="link" href="https://emr-dk.github.io">mit</a></span> andet hjem. 
+                        <p style="position: relative" class="is-size-5 has-text-weight-normal"><br>I min fritid kan jeg godt lide at bygge ting. Altså når jeg ikke har travlt i mit arbejde eller med at være CTO i en lille <a class="link" href="https://www.aiknowit.dk">startup</a>. 
+                            Jeg laver de her (halvbagte) ting fordi jeg synes det er sjovt og fordi det giver mig mulighed for at lære nyt, og fordi det hjælper mig med at slappe af. Måske det kan inspirere dig til noget?</p>
+                        <p style="position: relative" class="is-size-5 has-text-weight-normal"><br>Du bør også besøge min <a class="link" href="emr-dk.github.io">personlige profil</a> - kan være der er noget fedt der også. Håber jeg hører fra dig, eller møder dig ude i den virkelige verden.</p>
                         </div>
                 </div>  
             </div>
@@ -103,70 +109,6 @@
 
     -->
     <div class="middle">
-        <section class="section is-medium">
-            <div class="columns is-centered">
-                <div class="column is-5">
-                    <div class="container">
-                        <p class="title is-size-2 has-text-weight-bold">Hvilken slags ting arbejder jeg med?</p>
-                        <p class="subtitle is-size-3 has-text-weight-bold">Helt overordnet</p>
-                            <p class="is-size-5 has-text-weight-light pb-5 has-text-justified">Jeg synes det er mega fedt at lære nyt og at udfordre mig selv. Det må gerne blive konkret og udmønte sig i noget virkeligt. Derfor ender jeg ofte med at arbjede i krydsfeltet mellem hvordan man kan bruge IT-infrastruktur, data samt metoder til at beskrive og ændre verden.</p>          
-                    </div>
-                </div>
-            </div>
-            <div  class="columns is-centered">
-                <div class="column is-7">
-                    <ul>
-                        <li class="is-flex">
-                            <div class="is-size-2 has-text-weight-bold">1.</div>
-                            <div>
-                                <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
-                                <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
-                            
-                            </div>
-                        </li>
-                        <li class="is-flex">
-                            <div class="is-size-2 has-text-weight-bold">2.</div>
-                            <div>
-                                <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
-                                <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
-                            
-                            </div>
-                        </li>                        
-                        <li class="is-flex">
-                            <div class="is-size-2 has-text-weight-bold">3.</div>
-                            <div>
-                                <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
-                                <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
-                            
-                            </div>
-                        </li>                        
-                        <li class="is-flex">
-                            <div class="is-size-2 has-text-weight-bold">4.</div>
-                            <div>
-                                <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
-                                <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
-                            
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <div class="container">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-2">
-                    <img style="height: 100px; transform: rotate(45deg)" src="./static/svgs/doodles/arrow-with-scribble.svg">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 
-
-        THINGS I HAVE MADE 
-        Includes examples of various applications
-
-    -->
-    <section class="section things is-medium">
         <div class="columns is-centered">
             <div class="column is-5">
                 <div class="container">
@@ -174,7 +116,7 @@
                         <p class="subtitle is-size-3 has-text-weight-bold">Apps, koncepter og indfald</p>
                         <p class="is-size-5 has-text-weight-normal">Hey! Her kommer de så. De ... dimser ... jeg har lavet. Nogen af dem fremgår her (nedenfor 👇) og illustrerer egentlig bare lidt om min tilgang til verden samt hvad jeg synes var sjovt at lave i en given situation.
                             <br><br>
-                            Enkelte apps er driftsklare, de fleste er proof-of-concepts og vil nok aldrig komme længere ud end en page på GitHub. De indeholder alle links til <span class"icon"> <i class="devicon-github-original colored"></i></span>, og
+                            Enkelte apps er driftsklare, de fle ste er proof-of-concepts og vil nok aldrig komme længere ud end en page på GitHub. De indeholder alle links til <span class"icon"> <i class="devicon-github-original colored"></i></span>, og
                             faktiske hjemmesider hvis en sådan findes. På Github har jeg også forsøgt mig med at udarbejde <span class="is-italic">ordentlig dokumentation</span>&#8482;. <br>
                             <br>
                             Større apps består af tre repositorys. Et frontend, et backend samt et repo til offentligheden. Det meste holder jeg under lås og slå fordi jeg nok har hardcoded nogle adgangskoder i klar-tekst... Eller måske fordi kildekoden er ren spaghetti 🍜. 
@@ -182,159 +124,137 @@
                 </div>
             </div>
         </div>
-
-        <div class="columns has-text-centered is-mobile">
-            <div class="column is-offset-3 is-2">
-                <a class="is-flex is-flex-direction-column is-2 is-align-items-center">
-                    <figure class=" image is-96x96 logo">
-                        <img  class="image is-96x96 logo" src="./static/imgs/oel.png" alt="Placeholder image">
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a href="/en-mere-tak/" class="is-flex is-2 is-align-items-center">
+                    <figure class="image is-64x64 logo">
+                        <img  class="image is-64x64 logo" src="./static/imgs/oel.png" alt="Placeholder image">
                     </figure>
-                    <h1 class="title has-text-weight-bold font-enmere">En mere, tak!</h1>
+                    <h1 class="title has-text-weight-bold font-enmere pl-2">En mere, tak!</h1>
                 </a>
             </div>
+        </div>
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a  class="is-flex is-align-items-center">
+                    <figure class="image is-64x64 logo">
+                        <img  class="image is-64x64 logo" src="./static/imgs/sol2.png" alt="Placeholder image">
+                    </figure>
+                    <h1 class="title has-text-weight-bold font-solskin pl-2">solskin.app</h1>
+                </a>
+            </div>
+        </div>
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a href="/en-mere-tak/" class="is-flex is-2 is-align-items-center">
+                    <figure class="image is-64x64 logo">
+                        <img  class="image is-64x64 logo" src="./static/imgs/detour_logo.png" alt="Placeholder image">
+                    </figure>
+                    <h1 class="title has-text-weight-bold font-omvej pl-2">Omvej</h1>
+                </a>
+            </div>
+        </div>
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a class="is-flex is-2 is-align-items-center">
+                <figure class="image is-64x64 logo">
+                    <img  class="image is-64x64 logo" src="./static/imgs/skov.png" alt="Placeholder image">
+                </figure>
+                <h1 class="title has-text-weight-bold font-groent pl-2">Grønt</h1>
+            </a>
+            </div>
+        </div>
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a class="is-flex is-2 is-align-items-center">
+                    <figure class="image is-64x64 logo">
+                        <img  class="image is-64x64 logo" src="./static/imgs/lyn2.png" alt="Placeholder image">
+                    </figure>
+                    <h1 class="title has-text-weight-bold font-lynafleder pl-2">Lynafleder</h1>
+                </a>
+            </div>
+
+        </div>
+        <div class="columns is-centered has-text-centered is-mobile">
+            <div class="column is-5 app is-flex has-text-direction-row">
+                <a class="is-flex is-2 is-align-items-center">
+                <figure class="image is-64x64 logo">
+                    <img  class="image is-64x64 logo" src="./static/imgs/rain.png" alt="Placeholder image">
+                </figure>
+                <h1 class="title has-text-weight-bold font-regnvejr-navn">REGNVEJR</h1>
+            </a>
+            </div>
+        </div>
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
             <div class="column is-2">
-                <a class="is-flex is-flex-direction-column is-align-items-center">
-                    <figure class="image is-96x96 logo">
-                        <img  class="image is-96x96 logo" src="./static/imgs/sol2.png" alt="Placeholder image">
-                    </figure>
-                    <h1 class="title has-text-weight-bold font-solskin">solskin.app</h1>
-                </a>
+                <img style="height: 100px; transform: rotate(45deg)" src="./static/svgs/doodles/arrow-with-scribble.svg">
             </div>
-            <div class="column is-2 ">
-                <a class="is-flex is-flex-direction-column is-2 is-align-items-center">
-                <figure class="image is-96x96 logo">
-                    <img  class="image is-96x96 logo" src="./static/imgs/skov.png" alt="Placeholder image">
-                </figure>
-                <h1 class="title has-text-weight-bold font-groent">Grønt</h1>
-            </a>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-offset-4 is-2">
-                <a class="is-flex is-flex-direction-column is-2 is-align-items-center">
-                    <figure class="image is-96x96 logo">
-                        <img  class="image is-96x96 logo" src="./static/imgs/lyn2.png" alt="Placeholder image">
-                    </figure>
-                    <h1 class="title has-text-weight-bold font-lynafleder">Lynafleder</h1>
-                </a>
-            </div>
-            <div class="column is-2 ">
-                <a class="is-flex is-flex-direction-column is-2 is-align-items-center">
-                <figure class="image is-96x96 logo">
-                    <img  class="image is-96x96 logo" src="./static/imgs/rain.png" alt="Placeholder image">
-                </figure>
-                <h1 class="title has-text-weight-bold font-regnvejr-navn">REGNEN</h1>
-            </a>
-            </div>
-        </div>
-    </section>
+        </div>  
     </div>
-    <section style="border-top: 3px solid black; border-bottom: 3px solid black" class="section is-medium">
-
-        <div class="columns is-centered">
+    <section class="section is-small">
+        <div class ="columns is-centered">
             <div class="column is-5">
                 <div class="container">
-                    <p class="title is-size-2 has-text-weight-bold">Værktøjer</p>
-                    <p class="subtitle is-size-3 has-text-weight-bold">Ik' kun gadgets</p>
-                    <p class="is-size-5 has-text-weight-light">Ikke alt er et projekt. Her er nogle eksempler på forskellige værktøjer jeg også fedter rundt med.<span style="vertical-align: super; font-size: 0.75rem; font-style: italic">Might still be relevant though</span></p>                     
-            </div>
+                    <p class="title is-size-3 has-text-weight-bold">Her kommer mere</p>
+                    <p class="subtitle is-size-3">Når jeg lige finder ud af hvad det skal være...</p>
+                </div>
             </div>
         </div>
-        
-        <div class="columns">
-         <div class="columns is-centered has-text-justified">
-            <div class="column is-2">
-                <a href="https://basemap.hvor.io">
-                 <div class="card other-thing other-thing-5">
-                     <div class="container pt-5">
-                       <figure class="image m-auto is-96x96 is-flex">
-                         <img  class="other-thing-image is-align-items-center" src="./static/shiny.png" alt="Placeholder image">
-                       </figure>
-                     </div>
-                     <div class="card-content">
-                       <div class="media">
-                         <div class="media-content has-text-centered">
-                           <p class="title is-4 has-text-weight-bold">Basemap</p>
-                         </div>
-                       </div>
-                       <div class="content">
-                        Her er et eksempel på mit eget hjemmegenererede basemap. Du må gerne bruge det hvis du vil. Lavet i ...  
-                       </div>
-                    </div>
-                </a>
+        <!-- <div class="columns is-centered">
+            <div class="column is-5">
+                <div class="container">
+                    <p class="title is-size-2 has-text-weight-bold">Mine fem  </p>
+                        <p class="is-size-5 has-text-weight-light pb-5 has-text-justified">Jeg synes det er mega fedt at lære nyt og at udfordre mig selv. Det må gerne blive konkret og udmønte sig i noget virkeligt. Derfor ender jeg ofte med at arbjede i krydsfeltet mellem hvordan man kan bruge IT-infrastruktur, data samt metoder til at beskrive og ændre verden.</p>          
                 </div>
             </div>
-            <div class="column is-2">
-                <a href="https://shiny.hvor.io">
-                 <div class="card other-thing other-thing-2">
-                     <div class="container pt-5">
-                       <figure class="image m-auto is-96x96 is-flex">
-                         <img  class="other-thing-image is-align-items-center" src="./static/shiny.png" alt="Placeholder image">
-                       </figure>
-                     </div>
-                     <div class="card-content">
-                       <div class="media">
-                         <div class="media-content has-text-centered">
-                           <p class="title is-4 has-text-weight-bold">Shiny</p>
-                         </div>
-                       </div>
-                       <div class="content">
-                         Jeg kører også en Shiny service til når der skal laves og vises visualiseringer fra R. 
-                       </div>
-                    </div>
-                </a>
-                </div>
-            </div>
-            <div class="column is-2">
-                <a href="https://shiny.hvor.io">
-                <div class="card other-thing other-thing-3">
-                    <div class="container pt-5">
-                        <figure class="image m-auto is-96x96 is-flex">
-                            <img class="other-thing-image is-align-items-center" src="./static/voila-logo.svg" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media pb-0">
-                            <div class="media-content  has-text-centered">
-                                <p class="title is-4 has-text-weight-bold">Jupyter</p>
-                            </div>
+        </div>
+        <div  class="columns is-centered">
+            <div class="column is-7">
+                <ul>
+                    <li class="is-flex">
+                        <div class="is-size-2 has-text-weight-bold">1.</div>
+                        <div>
+                            <p class="title is-size-4 has-text-weight-bold"></p>
+                            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+                        
                         </div>
-                        <div class="content">
-                            <p class="is-8">
-                            I also have an instance of Jupyter (through Voila) running on a server. Here I also display some data
-                            </p>
+                    </li>
+                    <li class="is-flex">
+                        <div class="is-size-2 has-text-weight-bold">2.</div>
+                        <div>
+                            <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
+                            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+                        
                         </div>
-                    </div>
-                </div>
-                </a>
+                    </li>                        
+                    <li class="is-flex">
+                        <div class="is-size-2 has-text-weight-bold">3.</div>
+                        <div>
+                            <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
+                            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+                        
+                        </div>
+                    </li>                        
+                    <li class="is-flex">
+                        <div class="is-size-2 has-text-weight-bold">4.</div>
+                        <div>
+                            <p class="title is-size-4 has-text-weight-bold">Projektledelse</p>
+                            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus fermentum neque. Sed id augue sed erat laoreet molestie. Pellentesque ac felis ut quam dictum sollicitudin id eu mauris. Aliquam erat volutpat.</p>
+                        
+                        </div>
+                    </li>
+                </ul>
             </div>
-           <div class="column is-2">
-            <a href="https://api.hvor.io">
-            <div class="card other-thing other-thing-4">
-                <div class="container pt-5">
-                        <figure class="image is-96x96 m-auto is-flex">
-                            <img class="other-thing-image m-auto pt-auto is-align-items-center"  src="./static/fast-api.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content  has-text-centered">
-                      <p class="title is-4 has-text-weight-bold">api</p>
-                    </div>
-                  </div>
-                  <div class="content">
-                    So this is my api. I use it for some of my apps. It's made with FastAPI and served with nginx. Don't worry, it's HTTPS secured.👍
-                  </div>
-               </div>
-           </div>
-        </a>
-       </div>
+        </div> -->
+    </section>
+
     </div>
     </section>
     <footer style="background-color: #494456" class="footer">
         <div class="content has-text-centered">
-            <p style="color: white" class="subtitle is-size-3 has-text-weight-bold">There's no more here, friend.</p>
-            <p style="color: white" class="is-size-5 has-text-weight-light">Made with love by <a href="https://emr-dk.github.io">Emil</a> ❤️</p>
+            <p style="color: white" class="subtitle is-size-3 has-text-weight-bold">Nu er der ikke mere.</p>
+            <p style="color: white" class="is-size-5 has-text-weight-light">Lavet med al kærlighed af <a href="https://emr-dk.github.io">Emil</a> ❤️</p>
         </div>
       </footer>
 </body>
