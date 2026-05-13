@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>hvor.io | fullmap draft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet">
+  <link href="./static/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="./static/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="./static/fontawesome/css/solid.css" rel="stylesheet">
+  <link rel="stylesheet" href="./static/style.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @font-face { font-family: enmere;     src: url('./static/fonts/enmere.ttf'); }
+    @font-face { font-family: solskin;    src: url('./static/fonts/solskin.ttf'); }
+    @font-face { font-family: omvej;      src: url('./static/fonts/omvej.ttf'); }
+    @font-face { font-family: groent;     src: url('./static/fonts/groent.ttf'); }
+    @font-face { font-family: lynafleder; src: url('./static/fonts/lynafleder.ttf'); }
+    @font-face { font-family: regnvejr;   src: url('./static/fonts/regnvejr.ttf'); }
+
+    :root {
+      --bg:          #F3EFE6;
+      --ink:         #1C1912;
+      --border:      rgba(28,25,18,0.12);
+      --border-zone: rgba(28,25,18,0.22);
+      --cream:       #EBE4D4;
+
+      /* Zone colors */
+      --zone-hero:   #1C2830;
+      --zone-om:     #FEF8E4;
+      --zone-proj:   #E6F0F8;
+      --zone-fem:    #E8F5E8;
+      --zone-tech:   #F0EEEA;
+      --zone-kontakt:#1C1912;
+
+      --aktiv: #1a5c35;
+      --demo:  #7a4f00;
+    }
+
+    html, body {
+      font-family: "Barlow", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      margin: 0; padding: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       MAP TOOLBAR NAVBAR
+    ───────────────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(243,239,230,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--border-zone);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: stretch;
+      height: 52px;
+    }
+
+    /* Logo / brand — styled like a map attribution badge */
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      border-right: 1.5px solid var(--border-zone);
+      text-decoration: none;
+      gap: 0.6rem;
+    }
+    .nav-brand-mark {
+      font-family: VT323;
+      font-size: 1.5rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .nav-brand-coord {
+      font-family: VT323;
+      font-size: 0.75rem;
+      color: rgba(28,25,18,0.35);
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+    }
+    .nav-brand-coord span { display: block; }
+
+    /* Center nav links — styled as toolbar buttons */
+    .nav-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(28,25,18,0.5);
+      text-decoration: none;
+      border-right: 1px solid var(--border);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-btn:first-child { border-left: 1px solid var(--border); }
+    .nav-btn:hover { background: var(--cream); color: var(--ink); }
+    .nav-btn.active { background: var(--ink); color: var(--bg); }
+
+    /* Right: zoom controls + live coordinate readout */
+    .nav-tools {
+      display: flex;
+      align-items: center;
+      border-left: 1.5px solid var(--border-zone);
+    }
+    .nav-zoom {
+      display: flex;
+      flex-direction: column;
+      border-right: 1.5px solid var(--border-zone);
+    }
+    .zoom-btn {
+      flex: 1;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(28,25,18,0.5);
+      cursor: default;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      user-select: none;
+    }
+    .zoom-btn:last-child { border-bottom: none; }
+    .zoom-btn:hover { background: var(--cream); color: var(--ink); }
+    .nav-coords {
+      padding: 0 1rem;
+      font-family: VT323;
+      font-size: 0.85rem;
+      color: rgba(28,25,18,0.4);
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+    .nav-coords span { display: block; }
+
+    /* ─────────────────────────────────────────
+       GLOBAL MAP TILE BACKGROUND
+    ───────────────────────────────────────── */
+    /* Applied to body to give a subtle tile grid effect behind all sections */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        /* Major grid lines */
+        linear-gradient(rgba(28,25,18,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28,25,18,0.04) 1px, transparent 1px),
+        /* Minor grid lines */
+        linear-gradient(rgba(28,25,18,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28,25,18,0.02) 1px, transparent 1px);
+      background-size: 256px 256px, 256px 256px, 64px 64px, 64px 64px;
+    }
+
+    /* ─────────────────────────────────────────
+       ZONE SECTIONS
+    ───────────────────────────────────────── */
+    .zone {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Zone label badge — top-left of every section */
+    .zone-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(28,25,18,0.06);
+      border: 1px solid rgba(28,25,18,0.15);
+      border-radius: 3px;
+      padding: 0.25rem 0.6rem;
+      font-family: VT323;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: rgba(28,25,18,0.45);
+    }
+    .zone-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Zone boundary lines */
+    .zone + .zone {
+      border-top: 2px dashed var(--border-zone);
+    }
+
+    /* Layout shell */
+    .shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem 5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0 0 1.5rem;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO ZONE
+    ───────────────────────────────────────── */
+    .zone-hero {
+      background: var(--zone-hero);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2.5rem;
+      overflow: hidden;
+    }
+
+    /* OSM-like street grid in hero background */
+    .hero-streets {
+      position: absolute;
+      inset: 0;
+      opacity: 1;
+      pointer-events: none;
+    }
+    /* Crosshair at center */
+    .hero-crosshair {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      pointer-events: none;
+    }
+    .hero-crosshair::before,
+    .hero-crosshair::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.12);
+    }
+    .hero-crosshair::before { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+    .hero-crosshair::after  { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* "Du er her" marker above the headline */
+    .you-are-here {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      gap: 0;
+    }
+    .yah-label {
+      font-family: VT323;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .yah-pin {
+      width: 0; height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 18px solid rgba(230,80,60,0.8);
+      filter: drop-shadow(0 2px 6px rgba(230,80,60,0.4));
+    }
+    .yah-pin::after {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      background: rgba(230,80,60,0.9);
+      border-radius: 50%;
+      position: absolute;
+      top: -20px; left: -3px;
+    }
+    .yah-dot {
+      width: 6px; height: 6px;
+      background: rgba(230,80,60,0.7);
+      border-radius: 50%;
+      margin-top: 3px;
+      box-shadow: 0 0 10px rgba(230,80,60,0.5);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin: 0 0 1rem;
+    }
+    .hero-headline {
+      font-size: clamp(5rem, 13vw, 11rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      margin: 0 0 1.75rem;
+      color: rgba(255,255,255,0.95);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+      margin: 0 0 2.25rem;
+      max-width: 360px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      padding: 0.65rem 1.25rem;
+      transition: background 0.18s, border-color 0.18s, gap 0.2s;
+    }
+    .hero-cta:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); gap: 0.9rem; }
+
+    /* Hero corner compass rose */
+    .compass-rose {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      width: 56px; height: 56px;
+      opacity: 0.2;
+    }
+
+    /* Hero corner coordinates */
+    .corner-coord {
+      position: absolute;
+      font-family: VT323;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+    .corner-coord.tl { top: 5.5rem; left: 2.5rem; }
+    .corner-coord.tr { top: 5.5rem; right: 2.5rem; text-align: right; }
+    .corner-coord.bl { bottom: 2.5rem; left: 2.5rem; }
+
+    /* ─────────────────────────────────────────
+       OM ZONE — Residential (warm yellow)
+    ───────────────────────────────────────── */
+    .zone-om {
+      background: var(--zone-om);
+      border-left: 5px solid #D4B840;
+    }
+    .zone-om .zone-dot { background: #D4B840; }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      padding-top: 3rem;
+    }
+    .about-body p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0.7;
+      margin: 0 0 1.25rem;
+    }
+    .about-body a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(28,25,18,0.4);
+    }
+    .about-body a:hover { opacity: 0.6; }
+
+    /* ─────────────────────────────────────────
+       PROJEKTER ZONE — Commercial (light blue)
+    ───────────────────────────────────────── */
+    .zone-proj {
+      background: var(--zone-proj);
+      border-left: 5px solid #3A7AB8;
+    }
+    .zone-proj .zone-dot { background: #3A7AB8; }
+
+    .projects-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      padding-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .projects-intro-body {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0.6;
+    }
+
+    /* Project "popups" — styled like map popup cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .project-popup-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .project-popup {
+      background: #fff;
+      border: 1.5px solid rgba(28,25,18,0.15);
+      border-radius: 6px;
+      padding: 1.75rem 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      width: 100%;
+      box-shadow: 0 3px 12px rgba(28,25,18,0.1);
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .project-popup:hover {
+      box-shadow: 0 8px 28px rgba(28,25,18,0.15);
+      transform: translateY(-4px);
+    }
+    /* Popup tail */
+    .project-popup::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      border: 5px solid transparent;
+      border-top-color: rgba(28,25,18,0.15);
+    }
+    .project-popup::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      border: 4px solid transparent;
+      border-top-color: #fff;
+      z-index: 1;
+    }
+    /* Popup anchor dot */
+    .popup-anchor {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(28,25,18,0.3);
+      background: #fff;
+      margin: 0 auto;
+      box-shadow: 0 1px 4px rgba(28,25,18,0.15);
+      position: relative;
+      z-index: 0;
+    }
+
+    .project-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .project-logo {
+      width: 48px; height: 48px;
+      border-radius: 5px;
+      object-fit: cover;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .project-status {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border-radius: 99px;
+      border: 1.5px solid currentColor;
+      line-height: 1.4;
+    }
+    .project-status.aktiv { color: var(--aktiv); }
+    .project-status.demo  { color: var(--demo);  }
+    .project-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 0.6rem;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.65;
+      opacity: 0.58;
+      flex: 1;
+    }
+    .project-cta {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.38;
+      transition: opacity 0.2s, gap 0.2s;
+    }
+    .project-popup:hover .project-cta { opacity: 1; gap: 0.65rem; }
+
+    /* ─────────────────────────────────────────
+       MINE FEM ZONE — Park / Recreational (green)
+    ───────────────────────────────────────── */
+    .zone-fem {
+      background: var(--zone-fem);
+      border-left: 5px solid #3A8A4A;
+    }
+    .zone-fem .zone-dot { background: #3A8A4A; }
+
+    .fem-list { list-style: none; padding: 0; margin: 2rem 0 0; }
+    .fem-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(28,25,18,0.1);
+    }
+    .fem-item:first-child { border-top: 1px solid rgba(28,25,18,0.1); }
+    .fem-num {
+      font-family: VT323;
+      font-size: 4.5rem;
+      line-height: 1;
+      opacity: 0.1;
+      text-align: right;
+      padding-top: 0.15rem;
+    }
+    .fem-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .fem-body { font-size: 1rem; font-weight: 300; line-height: 1.8; opacity: 0.62; }
+
+    /* ─────────────────────────────────────────
+       TECH ZONE — Industrial (light grey)
+    ───────────────────────────────────────── */
+    .zone-tech {
+      background: var(--zone-tech);
+      border-left: 5px solid #888880;
+    }
+    .zone-tech .zone-dot { background: #888880; }
+
+    .tech-layout { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; padding-top: 3rem; }
+    .tech-left { position: sticky; top: 5rem; align-self: start; }
+    .tech-left p { font-size: 0.95rem; font-weight: 300; line-height: 1.7; opacity: 0.55; margin-top: 1.25rem; }
+    .tech-group { margin-bottom: 2.25rem; }
+    .tech-group-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.35;
+      margin-bottom: 0.75rem;
+    }
+    .tech-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border: 1.5px solid rgba(28,25,18,0.12);
+      border-radius: 4px;
+      background: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: default;
+      transition: border-color 0.18s, transform 0.18s;
+    }
+    .tech-chip:hover { border-color: var(--ink); transform: translateY(-2px); }
+    .tech-chip i { font-size: 1.1rem; }
+
+    /* ─────────────────────────────────────────
+       KONTAKT ZONE — Special civic dark
+    ───────────────────────────────────────── */
+    .zone-kontakt {
+      background: var(--zone-kontakt);
+      color: var(--bg);
+      border-left: 5px solid rgba(243,239,230,0.2);
+    }
+    .zone-kontakt .zone-badge {
+      background: rgba(243,239,230,0.06);
+      border-color: rgba(243,239,230,0.15);
+      color: rgba(243,239,230,0.4);
+    }
+    .zone-kontakt .zone-dot { background: rgba(243,239,230,0.5); }
+
+    /* "Here be dragons" decorative text */
+    .here-be-dragons {
+      font-family: VT323;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: rgba(243,239,230,0.15);
+      text-transform: uppercase;
+      text-align: right;
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+    }
+
+    .contact-big {
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      color: var(--bg);
+      margin: 0 0 1.75rem;
+      padding-top: 3rem;
+    }
+    .contact-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0.55;
+      max-width: 440px;
+      color: var(--bg);
+      margin-bottom: 2.5rem;
+    }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.35rem;
+      border: 1.5px solid rgba(243,239,230,0.2);
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--bg);
+      text-decoration: none;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .contact-link:hover {
+      background: rgba(243,239,230,0.08);
+      border-color: rgba(243,239,230,0.55);
+    }
+    .contact-link i { font-size: 1.1rem; }
+
+    /* ─────────────────────────────────────────
+       FOOTER — Map attribution
+    ───────────────────────────────────────── */
+    .site-footer {
+      background: #141210;
+      color: rgba(243,239,230,0.25);
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(243,239,230,0.06);
+      font-family: VT323;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+    }
+    .site-footer a { color: rgba(243,239,230,0.45); text-decoration: none; }
+    .site-footer a:hover { color: rgba(243,239,230,0.85); }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 52px;
+      left: 0;
+      height: 2px;
+      background: rgba(230,80,60,0.7);
+      z-index: 199;
+      width: 0%;
+      transition: width 0.1s;
+    }
+
+    /* ── Scroll fade ── */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── Custom font classes ── */
+    .font-enmere     { font: clamp(1.4rem, 4vw, 2rem) enmere !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-solskin    { font: clamp(1.8rem, 5vw, 2.8rem) solskin !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-omvej      { font: clamp(1.8rem, 5vw, 2.8rem) omvej !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-groent     { font: clamp(1.8rem, 5vw, 2.8rem) groent !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-lynafleder { font: clamp(1rem, 3vw, 1.4rem) lynafleder !important; word-break:keep-all; overflow:hidden; text-overflow:ellipsis; }
+    .font-regnvejr   { font: clamp(1.4rem, 4vw, 2rem) regnvejr; color: #06537A; word-break:keep-all; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+    /* ── Responsive ── */
+    @media (max-width: 820px) {
+      .site-nav { grid-template-columns: 1fr auto; }
+      .nav-center { display: none; }
+      .nav-coords { display: none; }
+      .nav-tools { border-left: none; }
+      .shell { padding: 4rem 1.25rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-header { grid-template-columns: 1fr; gap: 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .tech-layout { grid-template-columns: 1fr; }
+      .tech-left { position: static; }
+      .fem-item { grid-template-columns: 48px 1fr; gap: 1.25rem; }
+      .site-footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+      .zone-badge { display: none; }
+      .corner-coord { display: none; }
+      .compass-rose { display: none; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:          #1A1815;
+        --ink:         #F3EFE6;
+        --border:      rgba(243,239,230,0.09);
+        --border-zone: rgba(243,239,230,0.18);
+        --cream:       #221F1C;
+        --zone-om:     #1E1C10;
+        --zone-proj:   #101820;
+        --zone-fem:    #101810;
+        --zone-tech:   #1A1918;
+        --zone-kontakt:#0A0908;
+        --aktiv:       #5dba7f;
+        --demo:        #d4a045;
+      }
+      body::before {
+        background-image:
+          linear-gradient(rgba(243,239,230,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(243,239,230,0.03) 1px, transparent 1px),
+          linear-gradient(rgba(243,239,230,0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(243,239,230,0.015) 1px, transparent 1px);
+        background-size: 256px 256px, 256px 256px, 64px 64px, 64px 64px;
+      }
+      .project-popup { background: #1C1A16; border-color: rgba(243,239,230,0.12); }
+      .project-popup::before { border-top-color: #1C1A16; }
+      .tech-chip { background: #201E1A; }
+      .font-regnvejr { color: #7acfe8; }
+      .site-nav { background: rgba(26,24,21,0.96); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ── Map Toolbar Navbar ── -->
+  <nav class="site-nav" role="navigation" aria-label="Kortnavigation">
+    <a href="https://www.hvor.io" class="nav-brand" aria-label="Forside">
+      <span class="nav-brand-mark">?!.io</span>
+      <span class="nav-brand-coord">
+        <span>55°40′N</span>
+        <span>12°34′E</span>
+      </span>
+    </a>
+
+    <div class="nav-center">
+      <a href="#om"       class="nav-btn">Om</a>
+      <a href="#projekter" class="nav-btn">Projekter</a>
+      <a href="#fem"      class="nav-btn">Mine fem</a>
+      <a href="#kontakt"  class="nav-btn">Kontakt</a>
+    </div>
+
+    <div class="nav-tools">
+      <div class="nav-zoom" aria-label="Zoom">
+        <button class="zoom-btn" aria-label="Zoom ind" title="Zoom ind">+</button>
+        <button class="zoom-btn" aria-label="Zoom ud" title="Zoom ud">−</button>
+      </div>
+      <div class="nav-coords" id="nav-live-coords" aria-live="polite" aria-label="Aktuel position">
+        <span id="live-lat">55.676°N</span>
+        <span id="live-lon">12.568°E</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero Zone ── -->
+  <section class="zone zone-hero" id="top">
+
+    <!-- Street-like grid lines as SVG -->
+    <svg class="hero-streets" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="street-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <rect width="80" height="80" fill="none"/>
+          <line x1="0" y1="0" x2="0" y2="80"  stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+          <line x1="0" y1="0" x2="80" y2="0"  stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+        </pattern>
+        <!-- A few "major roads" -->
+        <pattern id="major-roads" x="0" y="0" width="320" height="320" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="320"   stroke="rgba(255,255,255,0.055)" stroke-width="2"/>
+          <line x1="0" y1="0" x2="320" y2="0"   stroke="rgba(255,255,255,0.055)" stroke-width="2"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#street-grid)"/>
+      <rect width="100%" height="100%" fill="url(#major-roads)"/>
+      <!-- A diagonal "motorway" or two -->
+      <line x1="0" y1="60%" x2="40%" y2="100%" stroke="rgba(255,255,255,0.04)" stroke-width="3"/>
+      <line x1="60%" y1="0" x2="100%" y2="45%" stroke="rgba(255,255,255,0.04)" stroke-width="3"/>
+    </svg>
+
+    <!-- Corner coordinates -->
+    <div class="corner-coord tl" aria-hidden="true">57.73°N  8.07°E</div>
+    <div class="corner-coord tr" aria-hidden="true">57.73°N  15.20°E</div>
+    <div class="corner-coord bl" aria-hidden="true">54.56°N  8.07°E</div>
+
+    <div class="hero-content">
+      <div class="you-are-here">
+        <span class="yah-label">Du er her</span>
+        <div class="yah-pin"></div>
+        <div class="yah-dot"></div>
+      </div>
+      <p class="hero-eyebrow">Emil Møller Rasmussen · Geo things</p>
+      <h1 class="hero-headline">hvor.io</h1>
+      <p class="hero-sub">Apps, koncepter og indfald lavet i fritiden. Naviger herunder for at udforske.</p>
+      <a href="#om" class="hero-cta">
+        <i class="bi bi-compass"></i> Udforsk kortet
+      </a>
+    </div>
+
+    <!-- Compass rose SVG -->
+    <svg class="compass-rose" viewBox="0 0 56 56" aria-hidden="true" fill="none">
+      <circle cx="28" cy="28" r="27" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+      <circle cx="28" cy="28" r="3"  fill="rgba(255,255,255,0.5)"/>
+      <!-- N arrow -->
+      <polygon points="28,4 31,26 28,22 25,26" fill="rgba(255,255,255,0.7)"/>
+      <!-- S arrow -->
+      <polygon points="28,52 25,30 28,34 31,30" fill="rgba(255,255,255,0.3)"/>
+      <!-- E/W ticks -->
+      <line x1="4" y1="28" x2="10" y2="28" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line x1="46" y1="28" x2="52" y2="28" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <text x="28" y="16" text-anchor="middle" font-family="VT323" font-size="8" fill="rgba(255,255,255,0.6)">N</text>
+    </svg>
+
+  </section>
+
+  <!-- ── Om Zone — Residential ── -->
+  <section class="zone zone-om" id="om">
+    <div class="zone-badge">
+      <span class="zone-dot"></span>
+      Zone 01 · Bolig
+    </div>
+    <div class="shell fade-in">
+      <div class="about-layout">
+        <div>
+          <h2 class="section-title">Hej og<br>velkommen</h2>
+        </div>
+        <div class="about-body">
+          <p>Dette er <a href="https://emr-dk.github.io">mit</a> andet hjem. I min fritid kan jeg godt lide at bygge ting — altså når jeg ikke har travlt i mit arbejde eller med at være CTO i en lille <a href="https://www.aiknowit.dk">startup</a>.</p>
+          <p>Jeg laver de her (halvbagte) ting fordi jeg synes det er sjovt og fordi det giver mig mulighed for at lære nyt, og fordi det hjælper mig med at slappe af. Måske det kan inspirere dig til noget?</p>
+          <p>Du bør også besøge min <a href="https://emr-dk.github.io">personlige profil</a> — kan være der er noget fedt der også. Håber jeg hører fra dig, eller møder dig ude i den virkelige verden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projekter Zone — Commercial ── -->
+  <section class="zone zone-proj" id="projekter">
+    <div class="zone-badge">
+      <span class="zone-dot"></span>
+      Zone 02 · Erhverv
+    </div>
+    <div class="shell">
+      <div class="projects-header fade-in">
+        <h2 class="section-title" style="margin:0;">Ting jeg<br>har lavet</h2>
+        <p class="projects-intro-body">Apps, koncepter og indfald. Nogen driftsklare, de fleste proof-of-concepts og vil nok aldrig komme længere end en page på GitHub.</p>
+      </div>
+
+      <!-- Project popups grid -->
+      <div class="projects-grid fade-in">
+
+        <div class="project-popup-wrap">
+          <a href="/en-mere-tak/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/oel.png" alt="En mere, tak! logo" class="project-logo">
+              <span class="project-status aktiv">Aktiv</span>
+            </div>
+            <div class="project-name font-enmere">En mere, tak!</div>
+            <p class="project-desc">Find værtshuse og taprooms i nærheden. Et socialt ølkort til afturer og spontane eventyr med vennerne.</p>
+            <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+        <div class="project-popup-wrap">
+          <a href="/plads-i-solen/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/sol2.png" alt="solskin.app logo" class="project-logo">
+              <span class="project-status aktiv">Aktiv</span>
+            </div>
+            <div class="project-name font-solskin">solskin.app</div>
+            <p class="project-desc">Find den nærmeste solskinsplads i din by. Vejr og geometri mødes, og du slipper for at sidde i skyggen.</p>
+            <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+        <div class="project-popup-wrap">
+          <a href="/detour-frontend/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/detour_logo.png" alt="Omvej logo" class="project-logo">
+              <span class="project-status demo">Demo</span>
+            </div>
+            <div class="project-name font-omvej">Omvej</div>
+            <p class="project-desc">Planlæg ruter der prioriterer det smukke frem for det hurtige. Til den der godt kan lide den lange vej hjem.</p>
+            <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+        <div class="project-popup-wrap">
+          <a href="/groent/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/skov.png" alt="Grønt logo" class="project-logo">
+              <span class="project-status demo">Demo</span>
+            </div>
+            <div class="project-name font-groent">Grønt</div>
+            <p class="project-desc">Udforsk parker, skove og grønne områder i nærheden. Et kort der hjælper dig ud af hjemmet og ind i naturen.</p>
+            <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+        <div class="project-popup-wrap">
+          <a href="/lynafleder/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/lyn2.png" alt="Lynafleder logo" class="project-logo">
+              <span class="project-status demo">Demo</span>
+            </div>
+            <div class="project-name font-lynafleder">Lynafleder</div>
+            <p class="project-desc">Realtids lynsporing for Danmark. Se tordenvejret udfolde sig på kortet og find ud af om det er på vej mod dig.</p>
+            <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+        <div class="project-popup-wrap">
+          <a href="/regn/" class="project-popup">
+            <div class="project-card-top">
+              <img src="./static/imgs/rain.png" alt="Regnvejr logo" class="project-logo">
+              <span class="project-status aktiv">Aktiv</span>
+            </div>
+            <div class="project-name font-regnvejr">REGNVEJR</div>
+            <p class="project-desc">Præcis nedbørsradar for Danmark. Hvornår rammer regnen — og hvornår holder den op? Svar på det vigtigste spørgsmål.</p>
+            <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+          </a>
+          <div class="popup-anchor"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mine fem Zone — Park ── -->
+  <section class="zone zone-fem" id="fem">
+    <div class="zone-badge">
+      <span class="zone-dot"></span>
+      Zone 03 · Rekreativ
+    </div>
+    <div class="shell fade-in">
+      <h2 class="section-title" style="padding-top:3rem;">Det jeg<br>brænder for</h2>
+      <ul class="fem-list">
+        <li class="fem-item fade-in">
+          <div class="fem-num">1.</div>
+          <div>
+            <p class="fem-title">Kort &amp; Geo</p>
+            <p class="fem-body">Der er noget næsten magisk ved et godt kort. Jeg er vild med geografiske data — hvad de kan fortælle, og hvad man kan bygge med dem. PostGIS, Leaflet, QGIS, GeoJSON: det er mit legetøj. Meget af det jeg laver kredser om at placere ting i rummet og finde mønstre i geografien.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">2.</div>
+          <div>
+            <p class="fem-title">Vejr &amp; Natur</p>
+            <p class="fem-body">Jeg er en smule besat af vejret. Ikke på en mærkelig måde — mere på den måde, at jeg har bygget tre apps om det. Regnvejr, Lynafleder, solskin.app… Det handler om at forstå og formidle noget, der er svært at forudsige.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">3.</div>
+          <div>
+            <p class="fem-title">Det sociale</p>
+            <p class="fem-body">Teknologi er sjovest, når det bringer folk tættere på hinanden eller på verden. "En mere, tak!" startede som en joke om at finde øl — men det handler egentlig om at mødes. Jeg er glad for folk, gode samtaler og de der aftenture, man husker bagefter.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">4.</div>
+          <div>
+            <p class="fem-title">At bygge ting</p>
+            <p class="fem-body">Kode er mit primære medie. Jeg er ikke bange for en ny stack. Jeg foretrækker at bygge noget halvbagt og virkeligt over at planlægge det perfekte system, der aldrig ser dagens lys. Prototype, test, gentag.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">5.</div>
+          <div>
+            <p class="fem-title">Infrastruktur &amp; drift</p>
+            <p class="fem-body">Der er en særlig tilfredsstillelse i at se en server køre stille og roligt i baggrunden — måned efter måned. Jeg elsker pipelines, containerisering og alt det der tilsyneladende kedelige, som faktisk holder tingene i luften.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Tech Zone — Industrial ── -->
+  <section class="zone zone-tech">
+    <div class="zone-badge">
+      <span class="zone-dot"></span>
+      Zone 04 · Erhvervsområde
+    </div>
+    <div class="shell fade-in">
+      <div class="tech-layout">
+        <div class="tech-left">
+          <h2 class="section-title" style="font-size: clamp(2rem,4vw,3.25rem);">Stack &amp;<br>Værktøjer</h2>
+          <p>En blanding af det, jeg har brugt i årevis, og det, jeg har kastet mig over fordi det lignede sjovt. Ingen liste er nogensinde komplet.</p>
+        </div>
+        <div>
+          <div class="tech-group">
+            <span class="tech-group-label">Backend &amp; Data</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-python-plain colored"></i> Python</span>
+              <span class="tech-chip"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+              <span class="tech-chip"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+              <span class="tech-chip"><i class="devicon-redis-plain colored"></i> Redis</span>
+              <span class="tech-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+              <span class="tech-chip"><i class="devicon-go-plain colored"></i> Go</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Frontend</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+              <span class="tech-chip"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+              <span class="tech-chip"><i class="devicon-react-original colored"></i> React</span>
+              <span class="tech-chip"><i class="devicon-svelte-plain colored"></i> Svelte</span>
+              <span class="tech-chip"><i class="devicon-html5-plain colored"></i> HTML / CSS</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Geo &amp; Kort</span>
+            <div class="tech-chips">
+              <span class="tech-chip">🗺️ PostGIS</span>
+              <span class="tech-chip">🍃 Leaflet</span>
+              <span class="tech-chip">🌍 QGIS</span>
+              <span class="tech-chip">📦 GeoJSON / GeoTIFF</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Infrastruktur</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-docker-plain colored"></i> Docker</span>
+              <span class="tech-chip"><i class="devicon-linux-plain"></i> Linux</span>
+              <span class="tech-chip"><i class="devicon-github-original"></i> GitHub Actions</span>
+              <span class="tech-chip"><i class="devicon-digitalocean-plain colored"></i> DigitalOcean</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Kontakt Zone — Civic / Special ── -->
+  <section class="zone zone-kontakt" id="kontakt" style="position:relative;">
+    <div class="zone-badge">
+      <span class="zone-dot"></span>
+      Zone 05 · Særligt område
+    </div>
+    <div class="shell fade-in">
+      <h2 class="contact-big">Sig hej.</h2>
+      <p class="contact-body">Er du nysgerrig på noget jeg har lavet? Har du et fedt projekt, en sjov idé, eller vil du bare snakke? Send en besked — jeg svarer næsten altid.</p>
+      <div class="contact-links">
+        <a href="https://github.com/emr-dk" class="contact-link" target="_blank" rel="noopener">
+          <i class="devicon-github-original"></i> GitHub
+        </a>
+        <a href="https://emr-dk.github.io" class="contact-link" target="_blank" rel="noopener">
+          <i class="bi bi-person-circle"></i> Personlig side
+        </a>
+        <a href="https://www.linkedin.com/in/emilmollerrasmussen/" class="contact-link" target="_blank" rel="noopener">
+          <i class="devicon-linkedin-plain"></i> LinkedIn
+        </a>
+        <a href="mailto:emil@hvor.io" class="contact-link">
+          <i class="bi bi-envelope-fill"></i> emil@hvor.io
+        </a>
+      </div>
+    </div>
+    <div class="here-be-dragons">Here be dragons</div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <span>© Emil Møller Rasmussen</span>
+    <span>Kortdata · Proj. WGS84 · Tiles genereret lokalt · Lavet af <a href="https://emr-dk.github.io">Emil</a></span>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // Scroll progress bar
+    const progress = document.getElementById('scroll-progress');
+    function updateProgress() {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      progress.style.width = Math.min(100, pct) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // Live coordinate readout — changes as you scroll through sections
+    const sectionCoords = [
+      { id: 'top',       lat: '55.676°N', lon: '12.568°E' },
+      { id: 'om',        lat: '55.681°N', lon: '12.572°E' },
+      { id: 'projekter', lat: '56.162°N', lon: '10.203°E' },
+      { id: 'fem',       lat: '57.048°N', lon: '9.920°E'  },
+      { id: 'kontakt',   lat: '55.403°N', lon: '10.402°E' },
+    ];
+
+    const liveLat = document.getElementById('live-lat');
+    const liveLon = document.getElementById('live-lon');
+
+    const sectionEls = sectionCoords.map(s => ({
+      el: document.getElementById(s.id),
+      lat: s.lat,
+      lon: s.lon,
+    })).filter(s => s.el);
+
+    function updateCoords() {
+      const scrollMid = window.scrollY + window.innerHeight / 2;
+      let current = sectionEls[0];
+      for (const s of sectionEls) {
+        if (s.el.offsetTop <= scrollMid) current = s;
+      }
+      if (liveLat.textContent !== current.lat) {
+        liveLat.textContent = current.lat;
+        liveLon.textContent = current.lon;
+      }
+    }
+    window.addEventListener('scroll', updateCoords, { passive: true });
+
+    // Active nav btn highlight
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = ['om', 'projekter', 'fem', 'kontakt'].map(id => document.getElementById(id)).filter(Boolean);
+
+    function updateNav() {
+      const scrollMid = window.scrollY + 120;
+      let active = null;
+      for (const s of sections) {
+        if (s.offsetTop <= scrollMid) active = s.id;
+      }
+      navBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('href') === '#' + active);
+      });
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+  </script>
+</body>
+</html>

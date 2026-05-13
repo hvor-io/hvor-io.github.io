@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>hvor.io | pinmap draft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet">
+  <link href="./static/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="./static/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="./static/fontawesome/css/solid.css" rel="stylesheet">
+  <link rel="stylesheet" href="./static/style.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @font-face { font-family: enmere;     src: url('./static/fonts/enmere.ttf'); }
+    @font-face { font-family: solskin;    src: url('./static/fonts/solskin.ttf'); }
+    @font-face { font-family: omvej;      src: url('./static/fonts/omvej.ttf'); }
+    @font-face { font-family: groent;     src: url('./static/fonts/groent.ttf'); }
+    @font-face { font-family: lynafleder; src: url('./static/fonts/lynafleder.ttf'); }
+    @font-face { font-family: regnvejr;   src: url('./static/fonts/regnvejr.ttf'); }
+
+    :root {
+      --bg:            #F2F5F8;
+      --ink:           #0D1B2A;
+      --ink-muted:     rgba(13,27,42,0.45);
+      --border:        rgba(13,27,42,0.10);
+      --border-strong: rgba(13,27,42,0.60);
+      --cream:         #E4EDF5;
+      --sea:           #B5CFDF;
+      --land:          #D8D0B0;
+      --sea-deep:      #0D2D4A;
+      --aktiv:         #1a5c35;
+      --demo:          #7a4f00;
+      --pin-aktiv:     #1a7a45;
+      --pin-demo:      #C08020;
+    }
+
+    html, body {
+      font-family: "Barlow", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      margin: 0; padding: 0;
+    }
+
+    /* ── Navbar ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: transparent;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .site-nav.scrolled {
+      background: var(--bg);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .site-nav .logo-mark {
+      font-family: VT323;
+      font-size: 1.6rem;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.25s;
+    }
+    .site-nav.scrolled .logo-mark { color: var(--ink); }
+    .site-nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .site-nav .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-nav.scrolled .nav-links a { color: var(--ink); opacity: 0.45; }
+    .site-nav .nav-links a:hover { color: rgba(255,255,255,1); }
+    .site-nav.scrolled .nav-links a:hover { color: var(--ink); opacity: 1; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--sea-deep);
+    }
+
+    /* Left panel */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(180,210,240,0.55);
+      margin: 0 0 1.25rem;
+    }
+    .hero-headline {
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      margin: 0 0 1.5rem;
+      color: rgba(240,248,255,0.97);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(180,210,240,0.6);
+      margin: 0 0 2.5rem;
+      max-width: 320px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(200,230,255,0.9);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(180,210,240,0.4);
+      padding-bottom: 0.2rem;
+      transition: gap 0.2s, border-color 0.2s;
+      align-self: flex-start;
+    }
+    .hero-cta:hover { gap: 0.9rem; border-color: rgba(200,230,255,0.9); color: #fff; }
+
+    /* Legend below cta */
+    .hero-legend {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(180,210,240,0.45);
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-dot.aktiv { background: var(--pin-aktiv); box-shadow: 0 0 6px rgba(26,122,69,0.5); }
+    .legend-dot.demo  { background: var(--pin-demo); box-shadow: 0 0 6px rgba(192,128,32,0.5); }
+
+    /* Right panel — the map */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem 4rem 1rem;
+    }
+
+    /* Latitude/longitude grid lines on the map panel */
+    .map-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(180,210,240,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180,210,240,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Scale bar bottom-right */
+    .map-scale {
+      position: absolute;
+      bottom: 1.75rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.2rem;
+    }
+    .scale-bar {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(180,210,240,0.6) 50%, transparent 50%);
+      border: 1px solid rgba(180,210,240,0.35);
+    }
+    .scale-label {
+      font-family: VT323;
+      font-size: 0.75rem;
+      color: rgba(180,210,240,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* Denmark SVG map */
+    .denmark-map {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+    }
+    .map-sea { fill: rgba(25,60,100,0.4); }
+    .map-land { fill: #B8AA88; stroke: rgba(180,210,240,0.2); stroke-width: 1; }
+    .map-land-hover { transition: fill 0.2s; }
+
+    /* Map pins */
+    .map-pin-group { cursor: pointer; }
+    .map-pin-group .pin-shadow {
+      fill: rgba(0,0,0,0.25);
+      rx: 50%;
+    }
+    .map-pin-circle {
+      r: 8;
+      transition: r 0.2s;
+    }
+    .map-pin-group:hover .map-pin-circle { r: 12; }
+    .map-pin-group.aktiv .map-pin-circle { fill: var(--pin-aktiv); stroke: rgba(255,255,255,0.5); stroke-width: 2; }
+    .map-pin-group.demo .map-pin-circle  { fill: var(--pin-demo);  stroke: rgba(255,255,255,0.5); stroke-width: 2; }
+    .map-pin-pulse {
+      fill: none;
+      stroke-width: 2;
+      opacity: 0;
+    }
+    .map-pin-group.aktiv .map-pin-pulse { stroke: var(--pin-aktiv); }
+    .map-pin-group.demo  .map-pin-pulse { stroke: var(--pin-demo); }
+    .map-pin-group:hover .map-pin-pulse {
+      r: 18;
+      opacity: 0.4;
+      animation: pulse-ring 1.2s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      from { r: 10; opacity: 0.5; }
+      to   { r: 22; opacity: 0; }
+    }
+
+    /* Pin label */
+    .pin-label {
+      font-family: "Barlow", sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      fill: rgba(240,248,255,0.9);
+      text-anchor: middle;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .map-pin-group:hover .pin-label { opacity: 1; }
+
+    /* Tooltip card shown on hover */
+    .map-tooltip {
+      position: absolute;
+      background: rgba(10,25,45,0.95);
+      border: 1px solid rgba(180,210,240,0.25);
+      border-radius: 6px;
+      padding: 0.9rem 1.1rem;
+      max-width: 200px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+    .map-tooltip.visible { opacity: 1; transform: translateY(0); }
+    .tooltip-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: rgba(240,248,255,0.95);
+      margin-bottom: 0.3rem;
+    }
+    .tooltip-desc {
+      font-size: 0.75rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(180,210,240,0.65);
+      margin-bottom: 0.5rem;
+    }
+    .tooltip-status {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .tooltip-status.aktiv { color: #5dba7f; }
+    .tooltip-status.demo  { color: #d4a045; }
+
+    /* ── Rule ── */
+    hr.rule {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Layout shell ── */
+    .shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+    }
+    .section-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.3;
+      margin-bottom: 3rem;
+    }
+    .section-title {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0 0 1.5rem;
+    }
+
+    /* ── About ── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-body p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0.7;
+      margin: 0 0 1.25rem;
+    }
+    .about-body a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border-strong);
+    }
+    .about-body a:hover { opacity: 0.6; }
+
+    /* ── Projects — maritime chart style ── */
+    .projects-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+    .projects-intro-body {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0.6;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-top: 3px solid var(--border);
+      padding: 1.75rem 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      border-radius: 3px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--sea-deep);
+      box-shadow: 0 6px 24px rgba(13,27,42,0.1);
+      transform: translateY(-3px);
+    }
+    .project-card.aktiv { border-top-color: var(--pin-aktiv); }
+    .project-card.demo  { border-top-color: var(--pin-demo); }
+    .project-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .project-logo {
+      width: 44px; height: 44px;
+      border-radius: 5px;
+      object-fit: cover;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .project-status {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border-radius: 99px;
+      border: 1.5px solid currentColor;
+      line-height: 1.4;
+    }
+    .project-status.aktiv { color: var(--aktiv); }
+    .project-status.demo  { color: var(--demo);  }
+    .project-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.65;
+      opacity: 0.58;
+      flex: 1;
+    }
+    .project-cta {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.38;
+      transition: opacity 0.2s, gap 0.2s;
+    }
+    .project-card:hover .project-cta { opacity: 1; gap: 0.65rem; }
+
+    /* ── Mine fem ── */
+    .fem-list { list-style: none; padding: 0; margin: 2rem 0 0; }
+    .fem-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .fem-item:first-child { border-top: 1px solid var(--border); }
+    .fem-num {
+      font-family: VT323;
+      font-size: 4.5rem;
+      line-height: 1;
+      opacity: 0.1;
+      text-align: right;
+      padding-top: 0.15rem;
+    }
+    .fem-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .fem-body { font-size: 1rem; font-weight: 300; line-height: 1.8; opacity: 0.62; }
+
+    /* ── Tech ── */
+    .tech-shell { background: var(--cream); }
+    .tech-layout { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; }
+    .tech-left { position: sticky; top: 5rem; align-self: start; }
+    .tech-left p { font-size: 0.95rem; font-weight: 300; line-height: 1.7; opacity: 0.55; margin-top: 1.25rem; }
+    .tech-group { margin-bottom: 2.25rem; }
+    .tech-group-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.35;
+      margin-bottom: 0.75rem;
+    }
+    .tech-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: default;
+      transition: border-color 0.18s, transform 0.18s;
+    }
+    .tech-chip:hover { border-color: var(--sea-deep); transform: translateY(-2px); }
+    .tech-chip i { font-size: 1.1rem; }
+
+    /* ── Contact ── */
+    .contact-shell { background: var(--sea-deep); color: var(--bg); }
+    .contact-shell .section-label { color: var(--bg); opacity: 0.28; }
+    .contact-big {
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      color: var(--bg);
+      margin: 0 0 1.75rem;
+    }
+    .contact-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0.55;
+      max-width: 440px;
+      color: var(--bg);
+      margin-bottom: 2.5rem;
+    }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.35rem;
+      border: 1.5px solid rgba(242,245,248,0.2);
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--bg);
+      text-decoration: none;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .contact-link:hover { background: rgba(242,245,248,0.08); border-color: rgba(242,245,248,0.55); }
+    .contact-link i { font-size: 1.1rem; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--sea-deep);
+      color: rgba(180,210,240,0.28);
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(180,210,240,0.07);
+      font-size: 0.78rem;
+      font-family: VT323;
+      letter-spacing: 0.06em;
+    }
+    .site-footer a { color: rgba(180,210,240,0.5); text-decoration: none; }
+    .site-footer a:hover { color: rgba(180,210,240,0.9); }
+
+    /* ── Scroll fade ── */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── Custom font classes ── */
+    .font-enmere     { font: clamp(1.2rem, 3vw, 1.7rem) enmere !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-solskin    { font: clamp(1.5rem, 4vw, 2.4rem) solskin !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-omvej      { font: clamp(1.5rem, 4vw, 2.4rem) omvej !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-groent     { font: clamp(1.5rem, 4vw, 2.4rem) groent !important; overflow:hidden; text-overflow:ellipsis; }
+    .font-lynafleder { font: clamp(0.9rem, 2.5vw, 1.2rem) lynafleder !important; word-break:keep-all; overflow:hidden; text-overflow:ellipsis; }
+    .font-regnvejr   { font: clamp(1.2rem, 3vw, 1.7rem) regnvejr; color: #06537A; word-break:keep-all; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+    /* ── Responsive ── */
+    @media (max-width: 820px) {
+      .hero-section { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 6rem 1.5rem 2rem; }
+      .hero-right { min-height: 55vw; padding: 1.5rem; }
+      .hero-legend { display: none; }
+      .shell { padding: 4rem 1.25rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-intro { grid-template-columns: 1fr; gap: 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .tech-layout { grid-template-columns: 1fr; }
+      .tech-left { position: static; }
+      .fem-item { grid-template-columns: 48px 1fr; gap: 1.25rem; }
+      .site-footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+      .site-nav { padding: 1rem 1.25rem; }
+      .site-nav .nav-links { gap: 1.25rem; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:    #0F1A25;
+        --ink:   #D6E8F5;
+        --border: rgba(214,232,245,0.09);
+        --border-strong: rgba(214,232,245,0.5);
+        --cream: #121E2A;
+        --land:  #3A3428;
+        --aktiv: #5dba7f;
+        --demo:  #d4a045;
+      }
+      .map-land { fill: #4A4234; }
+      .project-card { background: #121E2A; border-color: rgba(214,232,245,0.1); }
+      .project-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+      .tech-chip { background: #121E2A; }
+      .font-regnvejr { color: #7acfe8; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" role="navigation" aria-label="Hovednavigation">
+    <a href="https://www.hvor.io" class="logo-mark" aria-label="Forside">?!.io</a>
+    <ul class="nav-links">
+      <li><a href="#om">Om</a></li>
+      <li><a href="#projekter">Projekter</a></li>
+      <li><a href="#fem">Mine fem</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero: split layout with Denmark pin map ── -->
+  <section class="hero-section">
+
+    <div class="hero-left">
+      <p class="hero-eyebrow">Hvor ting bliver til</p>
+      <h1 class="hero-headline">hvor.io</h1>
+      <p class="hero-sub">Apps, koncepter og indfald lavet i fritiden. Geo, vejr og lidt af hvert — placeret på kortet.</p>
+      <a href="#projekter" class="hero-cta">Se projekterne <i class="bi bi-arrow-right"></i></a>
+
+      <div class="hero-legend">
+        <div class="legend-item">
+          <span class="legend-dot aktiv"></span>
+          Aktiv app
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot demo"></span>
+          Demo / prototype
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="map-grid" aria-hidden="true"></div>
+
+      <!-- Tooltip element (repositioned by JS) -->
+      <div class="map-tooltip" id="map-tooltip" aria-live="polite">
+        <div class="tooltip-name" id="tt-name"></div>
+        <div class="tooltip-desc" id="tt-desc"></div>
+        <div class="tooltip-status" id="tt-status"></div>
+      </div>
+
+      <!--
+        Denmark SVG — approximate outline
+        ViewBox: 0 0 420 520
+        Coordinate mapping: x = (lon - 8) / 7.2 * 420, y = (57.75 - lat) / 3.25 * 520
+      -->
+      <svg class="denmark-map" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kort over Danmark med projektmarkører">
+
+        <!-- Sea background -->
+        <rect class="map-sea" width="420" height="520" rx="4"/>
+
+        <!-- Subtle lat/lon grid lines -->
+        <g stroke="rgba(180,210,240,0.08)" stroke-width="0.5">
+          <!-- Latitude lines roughly every 0.5°: 57.5, 57.0, 56.5, 56.0, 55.5, 55.0 -->
+          <line x1="0" y1="38"  x2="420" y2="38"/>   <!-- ~57.5°N -->
+          <line x1="0" y1="118" x2="420" y2="118"/>  <!-- ~57.0°N -->
+          <line x1="0" y1="198" x2="420" y2="198"/>  <!-- ~56.5°N -->
+          <line x1="0" y1="278" x2="420" y2="278"/>  <!-- ~56.0°N -->
+          <line x1="0" y1="358" x2="420" y2="358"/>  <!-- ~55.5°N -->
+          <line x1="0" y1="438" x2="420" y2="438"/>  <!-- ~55.0°N -->
+          <!-- Longitude lines roughly every 1°: 9, 10, 11, 12, 13, 14 -->
+          <line x1="58"  y1="0" x2="58"  y2="520"/> <!-- 9°E -->
+          <line x1="117" y1="0" x2="117" y2="520"/> <!-- 10°E -->
+          <line x1="175" y1="0" x2="175" y2="520"/> <!-- 11°E -->
+          <line x1="234" y1="0" x2="234" y2="520"/> <!-- 12°E -->
+          <line x1="292" y1="0" x2="292" y2="520"/> <!-- 13°E -->
+          <line x1="351" y1="0" x2="351" y2="520"/> <!-- 14°E -->
+        </g>
+
+        <!-- ── Jutland (Jylland) ── -->
+        <path class="map-land" d="
+          M 151,3
+          L 148,50
+          C 138,78 125,100 112,112
+          C 117,138 122,172 119,206
+          C 124,230 130,245 129,256
+          C 125,276 106,300 92,318
+          C 89,336 88,348 88,361
+          L 87,420 86,455
+          C 70,458 58,456 50,449
+          C 40,434 30,405 27,365
+          C 21,354 7,352 4,350
+          C 2,342 4,320 10,300
+          C 11,278 13,258 14,238
+          C 13,216 12,195 12,168
+          C 15,150 22,130 32,110
+          C 38,98 38,95 42,84
+          C 50,68 72,44 110,22
+          C 128,11 142,5 151,3
+          Z
+        "/>
+
+        <!-- ── Funen (Fyn) ── -->
+        <path class="map-land" d="
+          M 125,368
+          C 118,380 117,396 126,408
+          C 135,420 152,424 170,418
+          C 186,412 193,400 188,388
+          C 183,375 168,368 153,366
+          C 140,364 130,360 125,368
+          Z
+        "/>
+
+        <!-- ── Zealand (Sjælland) ── -->
+        <path class="map-land" d="
+          M 210,264
+          C 222,254 242,254 260,266
+          C 276,278 285,298 283,320
+          C 281,344 270,368 254,382
+          C 237,396 216,396 202,384
+          C 188,372 184,350 188,328
+          C 192,308 200,274 210,264
+          Z
+        "/>
+
+        <!-- ── Lolland / Falster ── -->
+        <ellipse class="map-land" cx="218" cy="462" rx="55" ry="18"/>
+
+        <!-- ── Bornholm ── -->
+        <circle class="map-land" cx="400" cy="415" r="22"/>
+
+        <!-- ── Smaller islands ── -->
+        <!-- Ærø -->
+        <ellipse class="map-land" cx="142" cy="434" rx="18" ry="9" transform="rotate(-20 142 434)"/>
+        <!-- Mors -->
+        <ellipse class="map-land" cx="45" cy="150" rx="12" ry="16" transform="rotate(10 45 150)"/>
+        <!-- Samsø -->
+        <ellipse class="map-land" cx="155" cy="310" rx="9" ry="16" transform="rotate(-10 155 310)"/>
+
+        <!-- ── Lat/lon labels ── -->
+        <g font-family="VT323" font-size="9" fill="rgba(180,210,240,0.3)" letter-spacing="0.5">
+          <text x="2" y="41">57.5°N</text>
+          <text x="2" y="121">57.0°N</text>
+          <text x="2" y="201">56.5°N</text>
+          <text x="2" y="281">56.0°N</text>
+          <text x="2" y="361">55.5°N</text>
+          <text x="60" y="515">9°E</text>
+          <text x="118" y="515">10°E</text>
+          <text x="176" y="515">11°E</text>
+          <text x="235" y="515">12°E</text>
+          <text x="293" y="515">13°E</text>
+        </g>
+
+        <!-- ── Project pins ── -->
+
+        <!-- 1. En mere, tak! — Copenhagen (55.68°N, 12.57°E) → ~(266, 331) -->
+        <g class="map-pin-group aktiv"
+           data-name="En mere, tak!"
+           data-desc="Find værtshuse og taprooms i nærheden."
+           data-status="Aktiv"
+           data-href="/en-mere-tak/">
+          <circle class="map-pin-pulse" cx="266" cy="325" r="10"/>
+          <circle class="map-pin-circle" cx="266" cy="325"/>
+          <text class="pin-label" x="266" y="312">En mere</text>
+        </g>
+
+        <!-- 2. solskin.app — Aarhus (56.15°N, 10.21°E) → ~(129, 256) -->
+        <g class="map-pin-group aktiv"
+           data-name="solskin.app"
+           data-desc="Find den nærmeste solskinsplads i din by."
+           data-status="Aktiv"
+           data-href="/plads-i-solen/">
+          <circle class="map-pin-pulse" cx="129" cy="252" r="10"/>
+          <circle class="map-pin-circle" cx="129" cy="252"/>
+          <text class="pin-label" x="129" y="239">solskin</text>
+        </g>
+
+        <!-- 3. Omvej — Vejle area (55.71°N, 9.54°E) → ~(90, 322) -->
+        <g class="map-pin-group demo"
+           data-name="Omvej"
+           data-desc="Planlæg ruter der prioriterer det smukke."
+           data-status="Demo"
+           data-href="/detour-frontend/">
+          <circle class="map-pin-pulse" cx="90" cy="318" r="10"/>
+          <circle class="map-pin-circle" cx="90" cy="318"/>
+          <text class="pin-label" x="90" y="305">Omvej</text>
+        </g>
+
+        <!-- 4. Grønt — Aalborg (57.05°N, 9.92°E) → ~(112, 118) -->
+        <g class="map-pin-group demo"
+           data-name="Grønt"
+           data-desc="Udforsk parker og grønne områder i nærheden."
+           data-status="Demo"
+           data-href="/groent/">
+          <circle class="map-pin-pulse" cx="112" cy="118" r="10"/>
+          <circle class="map-pin-circle" cx="112" cy="118"/>
+          <text class="pin-label" x="112" y="105">Grønt</text>
+        </g>
+
+        <!-- 5. Lynafleder — Randers (56.46°N, 10.04°E) → ~(118, 206) -->
+        <g class="map-pin-group demo"
+           data-name="Lynafleder"
+           data-desc="Realtids lynsporing for Danmark."
+           data-status="Demo"
+           data-href="/lynafleder/">
+          <circle class="map-pin-pulse" cx="148" cy="200" r="10"/>
+          <circle class="map-pin-circle" cx="148" cy="200"/>
+          <text class="pin-label" x="148" y="187">Lynafleder</text>
+        </g>
+
+        <!-- 6. REGNVEJR — Odense/Funen (55.4°N, 10.39°E) → ~(139, 372) -->
+        <g class="map-pin-group aktiv"
+           data-name="REGNVEJR"
+           data-desc="Præcis nedbørsradar for Danmark."
+           data-status="Aktiv"
+           data-href="/regn/">
+          <circle class="map-pin-pulse" cx="152" cy="375" r="10"/>
+          <circle class="map-pin-circle" cx="152" cy="375"/>
+          <text class="pin-label" x="152" y="362">Regnvejr</text>
+        </g>
+
+      </svg>
+
+      <div class="map-scale" aria-hidden="true">
+        <div class="scale-bar"></div>
+        <span class="scale-label">≈ 100 km</span>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="rule">
+
+  <!-- ── About ── -->
+  <section id="om">
+    <div class="shell fade-in">
+      <span class="section-label">Om det sted her</span>
+      <div class="about-layout">
+        <div>
+          <h2 class="section-title">Hej og<br>velkommen</h2>
+        </div>
+        <div class="about-body">
+          <p>Dette er <a href="https://emr-dk.github.io">mit</a> andet hjem. I min fritid kan jeg godt lide at bygge ting — altså når jeg ikke har travlt i mit arbejde eller med at være CTO i en lille <a href="https://www.aiknowit.dk">startup</a>.</p>
+          <p>Jeg laver de her (halvbagte) ting fordi jeg synes det er sjovt og fordi det giver mig mulighed for at lære nyt, og fordi det hjælper mig med at slappe af. Måske det kan inspirere dig til noget?</p>
+          <p>Du bør også besøge min <a href="https://emr-dk.github.io">personlige profil</a> — kan være der er noget fedt der også. Håber jeg hører fra dig, eller møder dig ude i den virkelige verden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ── Projects ── -->
+  <section id="projekter">
+    <div class="shell">
+      <span class="section-label fade-in">Projekter</span>
+      <div class="projects-intro fade-in">
+        <h2 class="section-title" style="margin:0;">Ting jeg<br>har lavet</h2>
+        <p class="projects-intro-body">Apps, koncepter og indfald. Nogen driftsklare, de fleste proof-of-concepts og vil nok aldrig komme længere end en page på GitHub. Alle indeholder links til <i class="devicon-github-original" style="font-size:1em;vertical-align:middle;"></i>, og faktiske sider, hvis en sådan findes.</p>
+      </div>
+
+      <div class="projects-grid fade-in">
+        <a href="/en-mere-tak/" class="project-card aktiv">
+          <div class="project-card-top">
+            <img src="./static/imgs/oel.png" alt="En mere, tak! logo" class="project-logo">
+            <span class="project-status aktiv">Aktiv</span>
+          </div>
+          <div class="project-name font-enmere">En mere, tak!</div>
+          <p class="project-desc">Find værtshuse og taprooms i nærheden. Et socialt ølkort til afturer og spontane eventyr med vennerne.</p>
+          <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+        </a>
+
+        <a href="/plads-i-solen/" class="project-card aktiv">
+          <div class="project-card-top">
+            <img src="./static/imgs/sol2.png" alt="solskin.app logo" class="project-logo">
+            <span class="project-status aktiv">Aktiv</span>
+          </div>
+          <div class="project-name font-solskin">solskin.app</div>
+          <p class="project-desc">Find den nærmeste solskinsplads i din by. Vejr og geometri mødes, og du slipper for at sidde i skyggen.</p>
+          <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+        </a>
+
+        <a href="/detour-frontend/" class="project-card demo">
+          <div class="project-card-top">
+            <img src="./static/imgs/detour_logo.png" alt="Omvej logo" class="project-logo">
+            <span class="project-status demo">Demo</span>
+          </div>
+          <div class="project-name font-omvej">Omvej</div>
+          <p class="project-desc">Planlæg ruter der prioriterer det smukke frem for det hurtige. Til den der godt kan lide den lange vej hjem.</p>
+          <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+        </a>
+
+        <a href="/groent/" class="project-card demo">
+          <div class="project-card-top">
+            <img src="./static/imgs/skov.png" alt="Grønt logo" class="project-logo">
+            <span class="project-status demo">Demo</span>
+          </div>
+          <div class="project-name font-groent">Grønt</div>
+          <p class="project-desc">Udforsk parker, skove og grønne områder i nærheden. Et kort der hjælper dig ud af hjemmet og ind i naturen.</p>
+          <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+        </a>
+
+        <a href="/lynafleder/" class="project-card demo">
+          <div class="project-card-top">
+            <img src="./static/imgs/lyn2.png" alt="Lynafleder logo" class="project-logo">
+            <span class="project-status demo">Demo</span>
+          </div>
+          <div class="project-name font-lynafleder">Lynafleder</div>
+          <p class="project-desc">Realtids lynsporing for Danmark. Se tordenvejret udfolde sig på kortet og find ud af om det er på vej mod dig.</p>
+          <span class="project-cta">Se demo <i class="bi bi-arrow-right"></i></span>
+        </a>
+
+        <a href="/regn/" class="project-card aktiv">
+          <div class="project-card-top">
+            <img src="./static/imgs/rain.png" alt="Regnvejr logo" class="project-logo">
+            <span class="project-status aktiv">Aktiv</span>
+          </div>
+          <div class="project-name font-regnvejr">REGNVEJR</div>
+          <p class="project-desc">Præcis nedbørsradar for Danmark. Hvornår rammer regnen — og hvornår holder den op? Svar på det vigtigste spørgsmål.</p>
+          <span class="project-cta">Åbn app <i class="bi bi-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ── Mine fem ── -->
+  <section id="fem">
+    <div class="shell fade-in">
+      <span class="section-label">Mine fem</span>
+      <h2 class="section-title">Det jeg<br>brænder for</h2>
+      <ul class="fem-list">
+        <li class="fem-item fade-in">
+          <div class="fem-num">1.</div>
+          <div>
+            <p class="fem-title">Kort &amp; Geo</p>
+            <p class="fem-body">Der er noget næsten magisk ved et godt kort. Jeg er vild med geografiske data — hvad de kan fortælle, og hvad man kan bygge med dem. PostGIS, Leaflet, QGIS, GeoJSON: det er mit legetøj.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">2.</div>
+          <div>
+            <p class="fem-title">Vejr &amp; Natur</p>
+            <p class="fem-body">Jeg er en smule besat af vejret. Ikke på en mærkelig måde — mere på den måde, at jeg har bygget tre apps om det. Regnvejr, Lynafleder, solskin.app… Det handler om at forstå og formidle noget, der er svært at forudsige.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">3.</div>
+          <div>
+            <p class="fem-title">Det sociale</p>
+            <p class="fem-body">Teknologi er sjovest, når det bringer folk tættere på hinanden eller på verden. "En mere, tak!" startede som en joke om at finde øl — men det handler egentlig om at mødes.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">4.</div>
+          <div>
+            <p class="fem-title">At bygge ting</p>
+            <p class="fem-body">Kode er mit primære medie. Jeg foretrækker at bygge noget halvbagt og virkeligt over at planlægge det perfekte system, der aldrig ser dagens lys. Prototype, test, gentag.</p>
+          </div>
+        </li>
+        <li class="fem-item fade-in">
+          <div class="fem-num">5.</div>
+          <div>
+            <p class="fem-title">Infrastruktur &amp; drift</p>
+            <p class="fem-body">Der er en særlig tilfredsstillelse i at se en server køre stille og roligt i baggrunden — måned efter måned. Jeg elsker pipelines, containerisering og alt det der tilsyneladende kedelige, som faktisk holder tingene i luften.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ── Tech ── -->
+  <section class="tech-shell">
+    <div class="shell fade-in">
+      <span class="section-label">Hvad jeg bruger</span>
+      <div class="tech-layout">
+        <div class="tech-left">
+          <h2 class="section-title" style="font-size: clamp(2rem,4vw,3.25rem);">Stack &amp;<br>Værktøjer</h2>
+          <p>En blanding af det, jeg har brugt i årevis, og det, jeg har kastet mig over fordi det lignede sjovt.</p>
+        </div>
+        <div>
+          <div class="tech-group">
+            <span class="tech-group-label">Backend &amp; Data</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-python-plain colored"></i> Python</span>
+              <span class="tech-chip"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+              <span class="tech-chip"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+              <span class="tech-chip"><i class="devicon-redis-plain colored"></i> Redis</span>
+              <span class="tech-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+              <span class="tech-chip"><i class="devicon-go-plain colored"></i> Go</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Frontend</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+              <span class="tech-chip"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+              <span class="tech-chip"><i class="devicon-react-original colored"></i> React</span>
+              <span class="tech-chip"><i class="devicon-svelte-plain colored"></i> Svelte</span>
+              <span class="tech-chip"><i class="devicon-html5-plain colored"></i> HTML / CSS</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Geo &amp; Kort</span>
+            <div class="tech-chips">
+              <span class="tech-chip">🗺️ PostGIS</span>
+              <span class="tech-chip">🍃 Leaflet</span>
+              <span class="tech-chip">🌍 QGIS</span>
+              <span class="tech-chip">📦 GeoJSON / GeoTIFF</span>
+            </div>
+          </div>
+          <div class="tech-group">
+            <span class="tech-group-label">Infrastruktur</span>
+            <div class="tech-chips">
+              <span class="tech-chip"><i class="devicon-docker-plain colored"></i> Docker</span>
+              <span class="tech-chip"><i class="devicon-linux-plain"></i> Linux</span>
+              <span class="tech-chip"><i class="devicon-github-original"></i> GitHub Actions</span>
+              <span class="tech-chip"><i class="devicon-digitalocean-plain colored"></i> DigitalOcean</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="kontakt" class="contact-shell">
+    <div class="shell fade-in">
+      <span class="section-label">Kontakt</span>
+      <h2 class="contact-big">Sig hej.</h2>
+      <p class="contact-body">Er du nysgerrig på noget jeg har lavet? Har du et fedt projekt, en sjov idé, eller vil du bare snakke? Send en besked — jeg svarer næsten altid.</p>
+      <div class="contact-links">
+        <a href="https://github.com/emr-dk" class="contact-link" target="_blank" rel="noopener">
+          <i class="devicon-github-original"></i> GitHub
+        </a>
+        <a href="https://emr-dk.github.io" class="contact-link" target="_blank" rel="noopener">
+          <i class="bi bi-person-circle"></i> Personlig side
+        </a>
+        <a href="https://www.linkedin.com/in/emilmollerrasmussen/" class="contact-link" target="_blank" rel="noopener">
+          <i class="devicon-linkedin-plain"></i> LinkedIn
+        </a>
+        <a href="mailto:emil@hvor.io" class="contact-link">
+          <i class="bi bi-envelope-fill"></i> emil@hvor.io
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>Nu er der ikke mere.</span>
+    <span>© Emil Møller Rasmussen · Proj. WGS84 · Tiles: din skærm</span>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // Nav scroll state
+    const nav = document.querySelector('.site-nav');
+    const heroH = document.querySelector('.hero-section').offsetHeight;
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > heroH * 0.85);
+    }, { passive: true });
+
+    // Map pin tooltips
+    const tooltip = document.getElementById('map-tooltip');
+    const ttName   = document.getElementById('tt-name');
+    const ttDesc   = document.getElementById('tt-desc');
+    const ttStatus = document.getElementById('tt-status');
+    const mapContainer = document.querySelector('.hero-right');
+
+    document.querySelectorAll('.map-pin-group').forEach(pin => {
+      pin.addEventListener('mouseenter', e => {
+        const rect = pin.getBoundingClientRect();
+        const containerRect = mapContainer.getBoundingClientRect();
+
+        ttName.textContent   = pin.dataset.name;
+        ttDesc.textContent   = pin.dataset.desc;
+        ttStatus.textContent = pin.dataset.status;
+        ttStatus.className   = 'tooltip-status ' + (pin.dataset.status === 'Aktiv' ? 'aktiv' : 'demo');
+
+        // Position tooltip above the pin
+        const left = rect.left - containerRect.left + (rect.width / 2) - 100;
+        const top  = rect.top  - containerRect.top  - 100;
+        tooltip.style.left = Math.max(0, left) + 'px';
+        tooltip.style.top  = Math.max(0, top)  + 'px';
+        tooltip.classList.add('visible');
+      });
+      pin.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+      });
+      pin.addEventListener('click', () => {
+        if (pin.dataset.href) window.location.href = pin.dataset.href;
+      });
+    });
+  </script>
+</body>
+</html>
